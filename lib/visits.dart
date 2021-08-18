@@ -12,7 +12,7 @@ class VisitsApp extends StatefulWidget {
 
 class VisitsState extends State<VisitsApp> {
   
-  // Временный переменные только для верстки
+  // Временные переменные только для верстки
   // Удалить после соединения с бэком
 
   List dates = [

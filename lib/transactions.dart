@@ -12,7 +12,7 @@ class TransactionsApp extends StatefulWidget {
 
 class TransactionsState extends State<TransactionsApp> {
   
-  // Временный переменные только для верстки
+  // Временные переменные только для верстки
   // Удалить после соединения с бэком
 
   List dates = [

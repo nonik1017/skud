@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:skud/parents.dart';
 import 'package:skud/profile.dart';
 import 'package:skud/transactions.dart';
 import 'package:skud/visits.dart';
@@ -331,7 +332,7 @@ class InitState extends State<InitApp> {
                 ],
               ),
             ),
-          body: const TransactionsApp()
+          body: const ParentsApp()
         )
       ),
     );
