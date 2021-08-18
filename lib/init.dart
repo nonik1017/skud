@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:skud/profile.dart';
+import 'package:skud/transactions.dart';
 import 'package:skud/visits.dart';
 
 class InitApp extends StatefulWidget {
@@ -330,7 +331,7 @@ class InitState extends State<InitApp> {
                 ],
               ),
             ),
-          body: const VisitsApp()
+          body: const TransactionsApp()
         )
       ),
     );
