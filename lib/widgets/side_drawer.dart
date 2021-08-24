@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skud/init.dart';
-import 'package:skud/profile.dart';
-import 'package:skud/transactions.dart';
-import 'package:skud/visits.dart';
+import 'package:skud/pages/profile.dart';
+import 'package:skud/pages/transactions.dart';
+import 'package:skud/pages/visits.dart';
 
 class SideDrawer extends StatefulWidget {
   @override

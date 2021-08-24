@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:skud/parents.dart';
-import 'package:skud/side_drawer.dart';
+import 'package:skud/pages/parents.dart';
+import 'package:skud/widgets/side_drawer.dart';
 
 class InitApp extends StatefulWidget {
   const InitApp({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class InitApp extends StatefulWidget {
 enum LanguageCharacter { en, ru }
 
 class InitState extends State<InitApp> {
-  LanguageCharacter? _character = LanguageCharacter.ru;
+  final LanguageCharacter? _character = LanguageCharacter.ru;
 
   @override
   Widget build(BuildContext context) {
