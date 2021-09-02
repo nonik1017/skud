@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:skud/widgets/filter_period.dart';
+import 'package:skud/widgets/side_drawer.dart';
 
 class VisitsApp extends StatefulWidget {
   const VisitsApp({Key? key}) : super(key: key);
@@ -70,6 +71,24 @@ class VisitsState extends State<VisitsApp> {
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
       home: Builder(
           builder: (context) => Scaffold(
+                appBar: AppBar(
+                  elevation: 0,
+                  centerTitle: true,
+                  backgroundColor: Colors.white,
+                  iconTheme: const IconThemeData(color: Colors.black, size: 40),
+                  actions: [
+                    Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      child: IconButton(
+                          onPressed: () => {},
+                          icon: const Icon(
+                            Icons.notifications_none_rounded,
+                            size: 30,
+                          )),
+                    ),
+                  ],
+                ),
+                drawer: SideDrawer(),
                 body: ListView(
                   children: [
                     Column(

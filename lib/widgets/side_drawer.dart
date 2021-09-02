@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:skud/init.dart';
 import 'package:skud/pages/profile.dart';
 import 'package:skud/pages/transactions.dart';
@@ -30,11 +31,13 @@ class _SideDrawerState extends State<SideDrawer> {
                   Container(
                     margin: const EdgeInsets.only(top: 20, left: 10),
                     child: ListTile(
-                      leading: Container(
+                      leading: SizedBox(
                         height: 36,
                         width: 112,
-                        decoration: const BoxDecoration(
-                          color: Color.fromRGBO(22, 14, 78, 0.05),
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          height: 24,
+                          width: 24,
                         ),
                       ),
                       trailing: IconButton(
@@ -91,10 +94,14 @@ class _SideDrawerState extends State<SideDrawer> {
                         Navigator.push(context,
                             CupertinoPageRoute(builder: (_) => ProfileApp()));
                       },
-                      leading: Image.asset(
-                        'assets/images/user.png',
-                        height: 24,
-                        width: 24,
+                      leading:
+                          // Image.asset(
+                          //   'assets/images/user.png',
+                          //   height: 24,
+                          //   width: 24,
+                          // ),
+                          SvgPicture.asset(
+                        'assets/images/user.svg',
                       ),
                       title: Transform.translate(
                         offset: const Offset(-10, 0),
@@ -120,11 +127,16 @@ class _SideDrawerState extends State<SideDrawer> {
                         Navigator.push(context,
                             CupertinoPageRoute(builder: (_) => VisitsApp()));
                       },
-                      leading: Image.asset(
-                        'assets/images/location.png',
-                        height: 24,
-                        width: 24,
+                      leading:
+                          // Image.asset(
+                          //   'assets/images/location.png',
+                          //   height: 24,
+                          //   width: 24,
+                          // ),
+                          SvgPicture.asset(
+                        'assets/images/location.svg',
                       ),
+
                       title: Transform.translate(
                         offset: const Offset(-10, 0),
                         child: const Text(
@@ -151,10 +163,14 @@ class _SideDrawerState extends State<SideDrawer> {
                             CupertinoPageRoute(
                                 builder: (_) => TransactionsApp()));
                       },
-                      leading: Image.asset(
-                        'assets/images/wallet.png',
-                        height: 24,
-                        width: 24,
+                      leading:
+                          // Image.asset(
+                          //   'assets/images/wallet.png',
+                          //   height: 24,
+                          //   width: 24,
+                          // ),
+                          SvgPicture.asset(
+                        'assets/images/wallet.svg',
                       ),
                       title: Transform.translate(
                         offset: const Offset(-10, 0),
@@ -202,10 +218,14 @@ class _SideDrawerState extends State<SideDrawer> {
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      leading: Image.asset(
-                        'assets/images/parents.png',
-                        height: 24,
-                        width: 24,
+                      leading:
+                          // Image.asset(
+                          //   'assets/images/parents.png',
+                          //   height: 24,
+                          //   width: 24,
+                          // ),
+                          SvgPicture.asset(
+                        'assets/images/parents.svg',
                       ),
                       title: Transform.translate(
                         offset: const Offset(-10, 0),
