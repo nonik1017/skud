@@ -61,8 +61,8 @@ class ParentsState extends State<ParentsApp> {
                         decoration: const BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
-                          width: 1,
-                        ))),
+                                    width: 1,
+                                    color: Color.fromRGBO(0, 0, 0, 0.2)))),
                         child: ListTile(
                           leading: Container(
                               margin: const EdgeInsets.only(top: 5),
