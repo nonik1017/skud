@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skud/pages/profile.dart';
+import 'package:skud/presentation/jorneys/profile.dart';
 
 class InitApp extends StatefulWidget {
   const InitApp({Key? key}) : super(key: key);

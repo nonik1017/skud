@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:skud/init.dart';
-import 'package:skud/pages/parents.dart';
-import 'package:skud/pages/profile.dart';
-import 'package:skud/pages/transactions.dart';
-import 'package:skud/pages/visits.dart';
+import 'package:skud/presentation/jorneys/init.dart';
+import 'package:skud/presentation/jorneys/parents.dart';
+import 'package:skud/presentation/jorneys/profile.dart';
+import 'package:skud/presentation/jorneys/transactions.dart';
+import 'package:skud/presentation/jorneys/visits.dart';
 
 class SideDrawer extends StatefulWidget {
+  const SideDrawer({Key? key}) : super(key: key);
+
   @override
   _SideDrawerState createState() => _SideDrawerState();
 }
@@ -92,8 +94,10 @@ class _SideDrawerState extends State<SideDrawer> {
                     child: ListTile(
                       onTap: () {
                         Navigator.pop(context);
-                        Navigator.push(context,
-                            CupertinoPageRoute(builder: (_) => ProfileApp()));
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (_) => const ProfileApp()));
                       },
                       leading:
                           // Image.asset(
@@ -125,8 +129,10 @@ class _SideDrawerState extends State<SideDrawer> {
                     child: ListTile(
                       onTap: () {
                         Navigator.pop(context);
-                        Navigator.push(context,
-                            CupertinoPageRoute(builder: (_) => VisitsApp()));
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (_) => const VisitsApp()));
                       },
                       leading:
                           // Image.asset(
@@ -162,7 +168,7 @@ class _SideDrawerState extends State<SideDrawer> {
                         Navigator.push(
                             context,
                             CupertinoPageRoute(
-                                builder: (_) => TransactionsApp()));
+                                builder: (_) => const TransactionsApp()));
                       },
                       leading:
                           // Image.asset(
@@ -218,8 +224,10 @@ class _SideDrawerState extends State<SideDrawer> {
                     child: ListTile(
                       onTap: () {
                         Navigator.pop(context);
-                        Navigator.push(context,
-                            CupertinoPageRoute(builder: (_) => ParentsApp()));
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (_) => const ParentsApp()));
                       },
                       leading:
                           // Image.asset(

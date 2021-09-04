@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:skud/widgets/filter_period.dart';
-import 'package:skud/widgets/side_drawer.dart';
+import 'package:skud/presentation/widgets/filter_period.dart';
+import 'package:skud/presentation/widgets/side_drawer.dart';
 
 class TransactionsApp extends StatefulWidget {
   const TransactionsApp({Key? key}) : super(key: key);
