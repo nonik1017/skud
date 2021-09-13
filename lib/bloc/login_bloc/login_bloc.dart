@@ -15,9 +15,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({
     required this.userRepository,
     required this.authenticationBloc,
-  });
+  }) : super(LoginInitial());
 
-  @override
   LoginState get initialState => LoginInitial();
 
   @override
@@ -27,7 +26,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       try {
         final token = await userRepository.login(
-          event.email,
+          event.username,
           event.password,
         );
         authenticationBloc.add(LoggedIn(token: token));

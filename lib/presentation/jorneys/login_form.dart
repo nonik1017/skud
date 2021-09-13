@@ -8,9 +8,7 @@ import 'package:skud/repositories/repositories.dart';
 
 class LoginForm extends StatefulWidget {
   final UserRepository userRepository;
-  const LoginForm({key, required this.userRepository})
-      : assert(userRepository != null),
-        super(key: key);
+  const LoginForm({key, required this.userRepository}) : super(key: key);
 
   @override
   State<LoginForm> createState() => _LoginFormState(userRepository);
@@ -27,7 +25,7 @@ class _LoginFormState extends State<LoginForm> {
     _onLoginButtonPressed() {
       BlocProvider.of<LoginBloc>(context).add(
         LoginButtonPressed(
-          email: _usernameController.text,
+          username: _usernameController.text,
           password: _passwordController.text,
         ),
       );
@@ -94,7 +92,7 @@ class _LoginFormState extends State<LoginForm> {
                           borderSide: BorderSide(color: Style.Colors.mainColor),
                           borderRadius: BorderRadius.circular(30.0)),
                       contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
-                      labelText: "E-Mail",
+                      labelText: "Login",
                       hintStyle: TextStyle(
                           fontSize: 12.0,
                           color: Style.Colors.grey,
@@ -141,19 +139,19 @@ class _LoginFormState extends State<LoginForm> {
                     autocorrect: false,
                     obscureText: true,
                   ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: InkWell(
-                        child: Text(
-                          "Forget password?",
-                          style:
-                              TextStyle(color: Colors.black45, fontSize: 12.0),
-                        ),
-                        onTap: () {}),
-                  ),
+                  // SizedBox(
+                  //   height: 30.0,
+                  // ),
+                  // Align(
+                  //   alignment: Alignment.centerRight,
+                  //   child: InkWell(
+                  //       child: Text(
+                  //         "Forget password?",
+                  //         style:
+                  //             TextStyle(color: Colors.black45, fontSize: 12.0),
+                  //       ),
+                  //       onTap: () {}),
+                  // ),
                   Padding(
                     padding: EdgeInsets.only(top: 30.0, bottom: 20.0),
                     child: Column(
@@ -197,115 +195,115 @@ class _LoginFormState extends State<LoginForm> {
                       ],
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        "Or connect using",
-                        style: TextStyle(color: Colors.black26, fontSize: 12.0),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 40.0,
-                        width: 180.0,
-                        child: RaisedButton(
-                            color: Color(0xFF385c8e),
-                            disabledColor: Style.Colors.mainColor,
-                            disabledTextColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            onPressed: _onLoginButtonPressed,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Icon(
-                                  EvaIcons.facebook,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 5.0,
-                                ),
-                                Text("Facebook",
-                                    style: TextStyle(
-                                        fontSize: 12.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white)),
-                              ],
-                            )),
-                      ),
-                      SizedBox(
-                        width: 180.0,
-                        height: 40.0,
-                        child: RaisedButton(
-                            color: Color(0xFFf14436),
-                            disabledColor: Style.Colors.mainColor,
-                            disabledTextColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            onPressed: () {},
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Icon(
-                                  EvaIcons.google,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 5.0,
-                                ),
-                                Text("Google",
-                                    style: TextStyle(
-                                        fontSize: 12.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white)),
-                              ],
-                            )),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 40.0,
-                  ),
-                  Expanded(
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                          padding: EdgeInsets.only(bottom: 30.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                "Don't have an account?",
-                                style: TextStyle(color: Style.Colors.grey),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(right: 5.0),
-                              ),
-                              GestureDetector(
-                                  onTap: () {},
-                                  child: Text(
-                                    "Register",
-                                    style: TextStyle(
-                                        color: Style.Colors.mainColor,
-                                        fontWeight: FontWeight.bold),
-                                  ))
-                            ],
-                          )),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  )
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: const [
+                  //     Text(
+                  //       "Or connect using",
+                  //       style: TextStyle(color: Colors.black26, fontSize: 12.0),
+                  //     ),
+                  //   ],
+                  // ),
+                  // SizedBox(
+                  //   height: 20.0,
+                  // ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     SizedBox(
+                  //       height: 40.0,
+                  //       width: 180.0,
+                  //       child: RaisedButton(
+                  //           color: Color(0xFF385c8e),
+                  //           disabledColor: Style.Colors.mainColor,
+                  //           disabledTextColor: Colors.white,
+                  //           shape: RoundedRectangleBorder(
+                  //             borderRadius: BorderRadius.circular(8.0),
+                  //           ),
+                  //           onPressed: _onLoginButtonPressed,
+                  //           child: Row(
+                  //             mainAxisAlignment: MainAxisAlignment.center,
+                  //             children: const [
+                  //               Icon(
+                  //                 EvaIcons.facebook,
+                  //                 color: Colors.white,
+                  //               ),
+                  //               SizedBox(
+                  //                 width: 5.0,
+                  //               ),
+                  //               Text("Facebook",
+                  //                   style: TextStyle(
+                  //                       fontSize: 12.0,
+                  //                       fontWeight: FontWeight.bold,
+                  //                       color: Colors.white)),
+                  //             ],
+                  //           )),
+                  //     ),
+                  //     SizedBox(
+                  //       width: 180.0,
+                  //       height: 40.0,
+                  //       child: RaisedButton(
+                  //           color: Color(0xFFf14436),
+                  //           disabledColor: Style.Colors.mainColor,
+                  //           disabledTextColor: Colors.white,
+                  //           shape: RoundedRectangleBorder(
+                  //             borderRadius: BorderRadius.circular(8.0),
+                  //           ),
+                  //           onPressed: () {},
+                  //           child: Row(
+                  //             mainAxisAlignment: MainAxisAlignment.center,
+                  //             children: const [
+                  //               Icon(
+                  //                 EvaIcons.google,
+                  //                 color: Colors.white,
+                  //               ),
+                  //               SizedBox(
+                  //                 width: 5.0,
+                  //               ),
+                  //               Text("Google",
+                  //                   style: TextStyle(
+                  //                       fontSize: 12.0,
+                  //                       fontWeight: FontWeight.bold,
+                  //                       color: Colors.white)),
+                  //             ],
+                  //           )),
+                  //     ),
+                  //   ],
+                  // ),
+                  // SizedBox(
+                  //   height: 40.0,
+                  // ),
+                  // Expanded(
+                  //   child: Align(
+                  //     alignment: Alignment.bottomCenter,
+                  //     child: Container(
+                  //         padding: EdgeInsets.only(bottom: 30.0),
+                  //         child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           crossAxisAlignment: CrossAxisAlignment.center,
+                  //           children: <Widget>[
+                  //             Text(
+                  //               "Don't have an account?",
+                  //               style: TextStyle(color: Style.Colors.grey),
+                  //             ),
+                  //             Padding(
+                  //               padding: EdgeInsets.only(right: 5.0),
+                  //             ),
+                  //             GestureDetector(
+                  //                 onTap: () {},
+                  //                 child: Text(
+                  //                   "Register",
+                  //                   style: TextStyle(
+                  //                       color: Style.Colors.mainColor,
+                  //                       fontWeight: FontWeight.bold),
+                  //                 ))
+                  //           ],
+                  //         )),
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 20.0,
+                  // )
                 ],
               ),
             ),
