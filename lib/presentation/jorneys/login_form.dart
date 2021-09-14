@@ -1,4 +1,3 @@
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,22 +53,29 @@ class _LoginFormState extends State<LoginForm> {
                       padding: const EdgeInsets.only(bottom: 20.0, top: 40.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "AUTH WITH REST",
-                            style: TextStyle(
-                                color: style.Colors.mainColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 24.0),
-                          ),
+                        children: [
                           SizedBox(
-                            height: 5.0,
+                            height: 36,
+                            width: 112,
+                            child: Image.asset(
+                              'assets/images/logo_white.png',
+                              height: 24,
+                              width: 24,
+                            ),
                           ),
-                          Text(
-                            "Login app using BLOC pattern and REST API",
-                            style: TextStyle(
-                                fontSize: 10.0, color: Colors.black38),
-                          )
+                          const SizedBox(
+                            height: 45.0,
+                          ),
+                          const Center(
+                            child: Text(
+                              "Войдите в свою \nучетную запись",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  // color: style.Colors.mainColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0),
+                            ),
+                          ),
                         ],
                       )),
                   const SizedBox(
@@ -81,20 +87,21 @@ class _LoginFormState extends State<LoginForm> {
                         color: style.Colors.titleColor,
                         fontWeight: FontWeight.bold),
                     controller: _usernameController,
-                    keyboardType: TextInputType.number,
+                    // keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      prefixIcon: const Icon(EvaIcons.emailOutline,
-                          color: Colors.black26),
+                      // prefixIcon: const Icon(EvaIcons.emailOutline,
+                      //     color: Colors.black26),
                       enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(color: Colors.black12),
-                          borderRadius: BorderRadius.circular(30.0)),
+                          borderRadius: BorderRadius.circular(8.0)),
                       focusedBorder: OutlineInputBorder(
                           borderSide:
                               const BorderSide(color: style.Colors.mainColor),
-                          borderRadius: BorderRadius.circular(30.0)),
+                          borderRadius: BorderRadius.circular(8.0)),
                       contentPadding:
                           const EdgeInsets.only(left: 10.0, right: 10.0),
-                      labelText: "E-Mail",
+                      // labelText: "Введите ваш логин",
+                      hintText: "Введите ваш логин",
                       hintStyle: const TextStyle(
                           fontSize: 12.0,
                           color: style.Colors.grey,
@@ -117,19 +124,19 @@ class _LoginFormState extends State<LoginForm> {
                     controller: _passwordController,
                     decoration: InputDecoration(
                       fillColor: Colors.white,
-                      prefixIcon: const Icon(
-                        EvaIcons.lockOutline,
-                        color: Colors.black26,
-                      ),
+                      // prefixIcon: const Icon(
+                      //   EvaIcons.lockOutline,
+                      //   color: Colors.black26,
+                      // ),
                       enabledBorder: OutlineInputBorder(
                           borderSide: const BorderSide(color: Colors.black12),
-                          borderRadius: BorderRadius.circular(30.0)),
+                          borderRadius: BorderRadius.circular(8.0)),
                       focusedBorder: OutlineInputBorder(
                           borderSide:
                               const BorderSide(color: style.Colors.mainColor),
-                          borderRadius: BorderRadius.circular(30.0)),
+                          borderRadius: BorderRadius.circular(8.0)),
                       contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
-                      labelText: "Password",
+                      hintText: "Пароль",
                       hintStyle: const TextStyle(
                           fontSize: 12.0,
                           color: style.Colors.grey,
@@ -174,10 +181,10 @@ class _LoginFormState extends State<LoginForm> {
                                     disabledColor: style.Colors.mainColor,
                                     disabledTextColor: Colors.white,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
+                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     onPressed: _onLoginButtonPressed,
-                                    child: const Text("LOG IN",
+                                    child: const Text("Войти",
                                         style: TextStyle(
                                             fontSize: 12.0,
                                             fontWeight: FontWeight.bold,
