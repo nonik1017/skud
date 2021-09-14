@@ -25,7 +25,7 @@ class _LoginFormState extends State<LoginForm> {
     _onLoginButtonPressed() {
       BlocProvider.of<LoginBloc>(context).add(
         LoginButtonPressed(
-          email: _usernameController.text,
+          username: _usernameController.text,
           password: _passwordController.text,
         ),
       );
@@ -92,10 +92,9 @@ class _LoginFormState extends State<LoginForm> {
                           borderSide:
                               const BorderSide(color: style.Colors.mainColor),
                           borderRadius: BorderRadius.circular(30.0)),
-                      contentPadding:
-                          const EdgeInsets.only(left: 10.0, right: 10.0),
-                      labelText: "E-Mail",
-                      hintStyle: const TextStyle(
+                      contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      labelText: "Login",
+                      hintStyle: TextStyle(
                           fontSize: 12.0,
                           color: style.Colors.grey,
                           fontWeight: FontWeight.w500),
@@ -142,19 +141,19 @@ class _LoginFormState extends State<LoginForm> {
                     autocorrect: false,
                     obscureText: true,
                   ),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: InkWell(
-                        child: Text(
-                          "Forget password?",
-                          style:
-                              TextStyle(color: Colors.black45, fontSize: 12.0),
-                        ),
-                        onTap: () {}),
-                  ),
+                  // SizedBox(
+                  //   height: 30.0,
+                  // ),
+                  // Align(
+                  //   alignment: Alignment.centerRight,
+                  //   child: InkWell(
+                  //       child: Text(
+                  //         "Forget password?",
+                  //         style:
+                  //             TextStyle(color: Colors.black45, fontSize: 12.0),
+                  //       ),
+                  //       onTap: () {}),
+                  // ),
                   Padding(
                     padding: EdgeInsets.only(top: 30.0, bottom: 20.0),
                     child: Column(
