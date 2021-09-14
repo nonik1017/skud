@@ -26,7 +26,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       try {
         final token = await userRepository.login(
-          event.email,
+          event.username,
           event.password,
         );
         authenticationBloc.add(LoggedIn(token: token));

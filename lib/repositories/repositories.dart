@@ -9,7 +9,7 @@ class UserRepository {
   final Dio _dio = Dio();
 
   Future<bool> hasToken() async {
-    var value = await storage.read(key: 'token');
+    var value = await storage.read(key: 'access');
     if (value != null) {
       return true;
     } else {
@@ -26,9 +26,9 @@ class UserRepository {
     storage.deleteAll();
   }
 
-  Future<String> login(String phone, String password) async {
+  Future<String> login(String username, String password) async {
     Response response = await _dio.post(loginUrl, data: {
-      "email": phone,
+      "username": username,
       "password": password,
     });
     return response.data["token"];
