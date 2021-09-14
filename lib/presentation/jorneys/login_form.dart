@@ -3,14 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skud/bloc/login_bloc/login_bloc.dart';
-import 'package:skud/presentation/themes/theme.dart' as Style;
+import 'package:skud/presentation/themes/theme.dart' as style;
 import 'package:skud/repositories/repositories.dart';
 
 class LoginForm extends StatefulWidget {
   final UserRepository userRepository;
-  const LoginForm({key, required this.userRepository})
-      : assert(userRepository != null),
-        super(key: key);
+  const LoginForm({key, required this.userRepository}) : super(key: key);
 
   @override
   State<LoginForm> createState() => _LoginFormState(userRepository);
@@ -37,7 +35,7 @@ class _LoginFormState extends State<LoginForm> {
       listener: (context, state) {
         if (state is LoginFailure) {
           Scaffold.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text("Login failed."),
               backgroundColor: Colors.red,
             ),
@@ -53,14 +51,14 @@ class _LoginFormState extends State<LoginForm> {
                 children: [
                   Container(
                       height: 200.0,
-                      padding: EdgeInsets.only(bottom: 20.0, top: 40.0),
+                      padding: const EdgeInsets.only(bottom: 20.0, top: 40.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
                           Text(
                             "AUTH WITH REST",
                             style: TextStyle(
-                                color: Style.Colors.mainColor,
+                                color: style.Colors.mainColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 24.0),
                           ),
@@ -74,66 +72,69 @@ class _LoginFormState extends State<LoginForm> {
                           )
                         ],
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 30.0,
                   ),
                   TextFormField(
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 14.0,
-                        color: Style.Colors.titleColor,
+                        color: style.Colors.titleColor,
                         fontWeight: FontWeight.bold),
                     controller: _usernameController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      prefixIcon:
-                          Icon(EvaIcons.emailOutline, color: Colors.black26),
+                      prefixIcon: const Icon(EvaIcons.emailOutline,
+                          color: Colors.black26),
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black12),
+                          borderSide: const BorderSide(color: Colors.black12),
                           borderRadius: BorderRadius.circular(30.0)),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Style.Colors.mainColor),
+                          borderSide:
+                              const BorderSide(color: style.Colors.mainColor),
                           borderRadius: BorderRadius.circular(30.0)),
-                      contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      contentPadding:
+                          const EdgeInsets.only(left: 10.0, right: 10.0),
                       labelText: "E-Mail",
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           fontSize: 12.0,
-                          color: Style.Colors.grey,
+                          color: style.Colors.grey,
                           fontWeight: FontWeight.w500),
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                           fontSize: 12.0,
                           color: Colors.grey,
                           fontWeight: FontWeight.w500),
                     ),
                     autocorrect: false,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
                   TextFormField(
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 14.0,
-                        color: Style.Colors.titleColor,
+                        color: style.Colors.titleColor,
                         fontWeight: FontWeight.bold),
                     controller: _passwordController,
                     decoration: InputDecoration(
                       fillColor: Colors.white,
-                      prefixIcon: Icon(
+                      prefixIcon: const Icon(
                         EvaIcons.lockOutline,
                         color: Colors.black26,
                       ),
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black12),
+                          borderSide: const BorderSide(color: Colors.black12),
                           borderRadius: BorderRadius.circular(30.0)),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Style.Colors.mainColor),
+                          borderSide:
+                              const BorderSide(color: style.Colors.mainColor),
                           borderRadius: BorderRadius.circular(30.0)),
                       contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
                       labelText: "Password",
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           fontSize: 12.0,
-                          color: Style.Colors.grey,
+                          color: style.Colors.grey,
                           fontWeight: FontWeight.w500),
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                           fontSize: 12.0,
                           color: Colors.grey,
                           fontWeight: FontWeight.w500),
@@ -182,14 +183,14 @@ class _LoginFormState extends State<LoginForm> {
                                     ],
                                   )
                                 : RaisedButton(
-                                    color: Style.Colors.mainColor,
-                                    disabledColor: Style.Colors.mainColor,
+                                    color: style.Colors.mainColor,
+                                    disabledColor: style.Colors.mainColor,
                                     disabledTextColor: Colors.white,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
                                     onPressed: _onLoginButtonPressed,
-                                    child: Text("LOG IN",
+                                    child: const Text("LOG IN",
                                         style: TextStyle(
                                             fontSize: 12.0,
                                             fontWeight: FontWeight.bold,
@@ -206,7 +207,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
                   Row(
@@ -217,7 +218,7 @@ class _LoginFormState extends State<LoginForm> {
                         width: 180.0,
                         child: RaisedButton(
                             color: Color(0xFF385c8e),
-                            disabledColor: Style.Colors.mainColor,
+                            disabledColor: style.Colors.mainColor,
                             disabledTextColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
@@ -246,7 +247,7 @@ class _LoginFormState extends State<LoginForm> {
                         height: 40.0,
                         child: RaisedButton(
                             color: Color(0xFFf14436),
-                            disabledColor: Style.Colors.mainColor,
+                            disabledColor: style.Colors.mainColor,
                             disabledTextColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0),
@@ -284,11 +285,11 @@ class _LoginFormState extends State<LoginForm> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
-                              Text(
+                              const Text(
                                 "Don't have an account?",
-                                style: TextStyle(color: Style.Colors.grey),
+                                style: TextStyle(color: style.Colors.grey),
                               ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsets.only(right: 5.0),
                               ),
                               GestureDetector(
@@ -296,7 +297,7 @@ class _LoginFormState extends State<LoginForm> {
                                   child: Text(
                                     "Register",
                                     style: TextStyle(
-                                        color: Style.Colors.mainColor,
+                                        color: style.Colors.mainColor,
                                         fontWeight: FontWeight.bold),
                                   ))
                             ],

@@ -11,14 +11,12 @@ class InitApp extends StatefulWidget {
 enum LanguageCharacter { en, ru }
 
 class InitState extends State<InitApp> {
-  final LanguageCharacter? _character = LanguageCharacter.ru;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-      home: Builder(builder: (context) => Scaffold(body: const ProfileApp())),
+      home: Builder(builder: (context) => const Scaffold(body: ProfileApp())),
     );
   }
 }

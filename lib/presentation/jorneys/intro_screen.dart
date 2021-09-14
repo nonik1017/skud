@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:skud/presentation/themes/theme.dart' as Style;
+import 'package:skud/presentation/themes/theme.dart' as style;
 import 'package:skud/repositories/repositories.dart';
 
 import 'login_screen.dart';
@@ -28,18 +28,18 @@ class _IntroPageState extends State<IntroPage> {
     PageViewModel(
       titleWidget: Column(
         children: <Widget>[
-          Text(
+          const Text(
             'FREE GIFT',
             style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Container(
             height: 3,
             width: 100,
             decoration: BoxDecoration(
-                color: Style.Colors.mainColor,
+                color: style.Colors.mainColor,
                 borderRadius: BorderRadius.circular(10)),
           )
         ],
@@ -59,7 +59,7 @@ class _IntroPageState extends State<IntroPage> {
     PageViewModel(
       titleWidget: Column(
         children: <Widget>[
-          Text(
+          const Text(
             'PAYMENT INTEGRATION',
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -67,14 +67,14 @@ class _IntroPageState extends State<IntroPage> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Container(
             height: 3,
             width: 100,
             decoration: BoxDecoration(
-                color: Style.Colors.mainColor,
+                color: style.Colors.mainColor,
                 borderRadius: BorderRadius.circular(10)),
           )
         ],
@@ -98,18 +98,18 @@ class _IntroPageState extends State<IntroPage> {
     PageViewModel(
       titleWidget: Column(
         children: <Widget>[
-          Text(
+          const Text(
             'CALL CENTER',
             style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Container(
             height: 3,
             width: 100,
             decoration: BoxDecoration(
-                color: Style.Colors.mainColor,
+                color: style.Colors.mainColor,
                 borderRadius: BorderRadius.circular(10)),
           )
         ],
@@ -156,7 +156,7 @@ class _IntroPageState extends State<IntroPage> {
             dotsDecorator: DotsDecorator(
                 size: const Size.square(7.0),
                 activeSize: const Size(20.0, 5.0),
-                activeColor: Style.Colors.mainColor,
+                activeColor: style.Colors.mainColor,
                 color: Colors.black12,
                 spacing: const EdgeInsets.symmetric(horizontal: 3.0),
                 activeShape: RoundedRectangleBorder(
