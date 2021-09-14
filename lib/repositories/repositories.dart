@@ -2,13 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class UserRepository {
-  static String mainUrl = "https://reqres.in";
-  var loginUrl = '$mainUrl/api/login';
+  static String mainUrl = "https://api.skud.codetau.com/api";
+  var loginUrl = '$mainUrl/v1/token';
 
-  final FlutterSecureStorage storage = new FlutterSecureStorage();
+  final FlutterSecureStorage storage = FlutterSecureStorage();
   final Dio _dio = Dio();
 
   Future<bool> hasToken() async {
+    // return true;
     var value = await storage.read(key: 'token');
     if (value != null) {
       return true;
@@ -33,5 +34,4 @@ class UserRepository {
     });
     return response.data["token"];
   }
-
 }
