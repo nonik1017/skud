@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skud/presentation/jorneys/intro_screen.dart';
+import 'package:skud/presentation/jorneys/login_screen.dart';
 import 'package:skud/presentation/jorneys/main_screen.dart';
 import 'package:skud/presentation/themes/theme.dart' as style;
 
@@ -63,7 +63,8 @@ class MyApp extends StatelessWidget {
             return MainScreen();
           }
           if (state is AuthenticationUnauthenticated) {
-            return IntroPage(userRepository: userRepository);
+            // return IntroPage(userRepository: userRepository);
+            return LoginScreen(userRepository: userRepository);
           }
           if (state is AuthenticationLoading) {
             return Scaffold(

@@ -10,11 +10,7 @@ class UserRepository {
 
   Future<bool> hasToken() async {
     var value = await storage.read(key: 'access');
-    if (value != null) {
-      return true;
-    } else {
-      return false;
-    }
+    return value != null;
   }
 
   Future<void> persistToken(String token) async {
@@ -31,6 +27,6 @@ class UserRepository {
       "username": username,
       "password": password,
     });
-    return response.data["token"];
+    return response.data["access"];
   }
 }
