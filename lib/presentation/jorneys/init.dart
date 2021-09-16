@@ -16,7 +16,7 @@ class InitState extends State<InitApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-      home: Builder(builder: (context) => const Scaffold(body: ProfileApp())),
+      home: Builder(builder: (context) => Scaffold(body: ProfileApp())),
     );
   }
 }

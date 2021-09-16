@@ -93,11 +93,9 @@ class _SideDrawerState extends State<SideDrawer> {
                     margin: const EdgeInsets.only(top: 50, left: 10),
                     child: ListTile(
                       onTap: () {
-                        Navigator.pop(context);
-                        Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (_) => const ProfileApp()));
+                        // Navigator.pop(context);
+                        Navigator.push(context,
+                            CupertinoPageRoute(builder: (_) => ProfileApp()));
                       },
                       leading:
                           // Image.asset(
@@ -128,7 +126,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     margin: const EdgeInsets.only(top: 10, left: 10),
                     child: ListTile(
                       onTap: () {
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
                         Navigator.push(
                             context,
                             CupertinoPageRoute(
@@ -164,7 +162,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     margin: const EdgeInsets.only(top: 10, left: 10),
                     child: ListTile(
                       onTap: () {
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
                         Navigator.push(
                             context,
                             CupertinoPageRoute(
@@ -223,7 +221,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     margin: const EdgeInsets.only(top: 10, left: 10),
                     child: ListTile(
                       onTap: () {
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
                         Navigator.push(
                             context,
                             CupertinoPageRoute(

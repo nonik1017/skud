@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skud/presentation/jorneys/login_screen.dart';
-import 'package:skud/presentation/jorneys/main_screen.dart';
+import 'package:skud/presentation/jorneys/profile.dart';
 import 'package:skud/presentation/themes/theme.dart' as style;
 
 import 'bloc/auth_bloc/auth.dart';
@@ -60,7 +60,8 @@ class MyApp extends StatelessWidget {
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is AuthenticationAuthenticated) {
-            return MainScreen();
+            // return MainScreen();
+            return ProfileApp();
           }
           if (state is AuthenticationUnauthenticated) {
             // return IntroPage(userRepository: userRepository);
