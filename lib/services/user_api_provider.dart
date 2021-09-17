@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:skud/models/user.dart';
 
@@ -7,7 +5,7 @@ class UserProvider {
   static String mainUrl = "https://api.skud.codetau.com/api";
   var userUrl = '$mainUrl/v1/auth/user';
 
-  Future<User> getUser(token) async {
+  Future<dynamic> getUser(token) async {
     final Dio _dio = Dio();
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers["Authorization"] = "Bearer $token";
@@ -16,8 +14,7 @@ class UserProvider {
 
     if (response.statusCode == 200) {
       print('-----response.data: ${response.data}-----');
-      Map<String, dynamic> userJson = jsonDecode(response.data);
-      print('-----user: $userJson-----');
+      Map<String, dynamic> userJson = Map<String, dynamic>.from(response.data);
       return User.fromJson(userJson);
     } else {
       throw Exception('Error user fetching');

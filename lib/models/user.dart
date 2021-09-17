@@ -1,6 +1,6 @@
 class User {
   int id;
-  int balance;
+  double balance;
   String username;
   String role;
   String? cashbox;

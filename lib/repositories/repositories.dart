@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:skud/models/user.dart';
 import 'package:skud/services/user_api_provider.dart';
 
 class UserRepository {
@@ -47,7 +46,7 @@ class UserRepository {
     }
   }
 
-  Future<User> getUser() async {
+  Future<dynamic> getUser() async {
     var token = await getToken();
     return await _userProvider.getUser(token);
   }

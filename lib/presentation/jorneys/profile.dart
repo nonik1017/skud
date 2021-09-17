@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skud/bloc/auth_bloc/auth.dart';
 import 'package:skud/bloc/user_bloc/user_bloc.dart';
 import 'package:skud/bloc/user_bloc/user_event.dart';
 import 'package:skud/bloc/user_bloc/user_state.dart';
+import 'package:skud/presentation/widgets/emtpy_text_widget.dart';
 import 'package:skud/presentation/widgets/side_drawer.dart';
 import 'package:skud/repositories/repositories.dart';
 
@@ -47,15 +49,22 @@ class ProfileApp extends StatelessWidget {
                     iconTheme:
                         const IconThemeData(color: Colors.black, size: 40),
                     actions: [
-                      Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        child: IconButton(
-                            onPressed: () => {},
-                            icon: const Icon(
-                              Icons.notifications_none_rounded,
-                              size: 30,
-                            )),
-                      ),
+                      // Container(
+                      //   margin: const EdgeInsets.only(right: 10),
+                      //   child: IconButton(
+                      //       onPressed: () => {},
+                      //       icon: const Icon(
+                      //         Icons.notifications_none_rounded,
+                      //         size: 30,
+                      //       )),
+                      // ),
+                      IconButton(
+                          icon: Icon(Icons.logout_outlined),
+                          onPressed: () {
+                            BlocProvider.of<AuthenticationBloc>(context).add(
+                              LoggedOut(),
+                            );
+                          })
                     ],
                   ),
                   drawer: SideDrawer(),
@@ -65,9 +74,10 @@ class ProfileApp extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                              margin: const EdgeInsets.only(top: 40, left: 40),
-                              child: Image.asset(
-                                'assets/images/avatar.png',
+                              margin: const EdgeInsets.only(top: 30, left: 40),
+                              child: const Icon(
+                                Icons.account_circle_outlined,
+                                size: 100,
                               )),
                           Column(
                             children: <Widget>[
@@ -75,7 +85,7 @@ class ProfileApp extends StatelessWidget {
                                 margin:
                                     const EdgeInsets.only(top: 40, left: 15),
                                 child: Text(
-                                  '${state.loadedUser.firstName} ${state.loadedUser.middleName} ${state.loadedUser.lastName}',
+                                  '${state.loadedUser?.firstName} ${state.loadedUser?.middleName} ${state.loadedUser?.lastName}',
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 20,
@@ -92,11 +102,14 @@ class ProfileApp extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8),
                                   color: const Color.fromRGBO(246, 188, 0, 0.3),
                                 ),
-                                child: Text(
-                                  '${state.loadedUser.balance}',
-                                  style: const TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w700,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  child: Text(
+                                    '${state.loadedUser?.balance}',
+                                    style: const TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -112,14 +125,17 @@ class ProfileApp extends StatelessWidget {
                               fontSize: 14, fontWeight: FontWeight.w400),
                         ),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 40),
-                        child: Text(
-                          '${state.loadedUser.iin}',
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                      ),
+                      state.loadedUser?.iin != null
+                          ? Container(
+                              margin: const EdgeInsets.only(left: 40),
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Text(
+                                '${state.loadedUser?.iin}',
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w700),
+                              ),
+                            )
+                          : EmptyText(),
                       Container(
                         margin: const EdgeInsets.only(left: 40, top: 30),
                         child: const Text(
@@ -130,6 +146,7 @@ class ProfileApp extends StatelessWidget {
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 40),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Text(
                           state.loadedUser.username,
                           style: const TextStyle(
@@ -144,30 +161,37 @@ class ProfileApp extends StatelessWidget {
                               fontSize: 14, fontWeight: FontWeight.w400),
                         ),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 40),
-                        child: Text(
-                          '${state.loadedUser.phone}',
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                      ),
+                      state.loadedUser?.phone != null
+                          ? Container(
+                              margin: const EdgeInsets.only(left: 40),
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Text(
+                                '${state.loadedUser?.phone}',
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w700),
+                              ),
+                            )
+                          : EmptyText(),
                       Container(
                         margin: const EdgeInsets.only(left: 40, top: 30),
+                        padding: const EdgeInsets.only(top: 10),
                         child: const Text(
                           'E-mail',
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w400),
                         ),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 40),
-                        child: Text(
-                          '${state.loadedUser.email}',
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                      ),
+                      state.loadedUser?.email != null
+                          ? Container(
+                              margin: const EdgeInsets.only(left: 40),
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Text(
+                                '${state.loadedUser?.email}',
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w700),
+                              ),
+                            )
+                          : EmptyText(),
                       Container(
                         margin: const EdgeInsets.only(left: 40, top: 30),
                         child: const Text(
@@ -176,17 +200,21 @@ class ProfileApp extends StatelessWidget {
                               fontSize: 14, fontWeight: FontWeight.w400),
                         ),
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 40),
-                        child: Text(
-                          '${state.loadedUser.grade}',
-                          style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                      state.loadedUser.teacher != null
+                      state.loadedUser?.grade != null
+                          ? Container(
+                              margin: const EdgeInsets.only(left: 40),
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Text(
+                                '${state.loadedUser?.grade}',
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w700),
+                              ),
+                            )
+                          : EmptyText(),
+                      state.loadedUser?.teacher != null
                           ? Container(
                               margin: const EdgeInsets.only(left: 40, top: 30),
+                              padding: const EdgeInsets.only(top: 10),
                               child: const Text(
                                 'Классный руководитель',
                                 style: TextStyle(
@@ -194,9 +222,10 @@ class ProfileApp extends StatelessWidget {
                               ),
                             )
                           : const SizedBox(),
-                      state.loadedUser.teacher != null
+                      state.loadedUser?.teacher != null
                           ? Container(
                               margin: const EdgeInsets.only(left: 40),
+                              padding: const EdgeInsets.only(top: 10),
                               child: const Text(
                                 'Алиев Иманбек Серикович',
                                 style: TextStyle(
