@@ -4,6 +4,7 @@ import 'package:skud/bloc/auth_bloc/auth.dart';
 import 'package:skud/bloc/user_bloc/user_bloc.dart';
 import 'package:skud/bloc/user_bloc/user_event.dart';
 import 'package:skud/bloc/user_bloc/user_state.dart';
+import 'package:skud/presentation/themes/theme.dart' as style;
 import 'package:skud/presentation/widgets/emtpy_text_widget.dart';
 import 'package:skud/presentation/widgets/side_drawer.dart';
 import 'package:skud/repositories/repositories.dart';
@@ -78,6 +79,7 @@ class ProfileApp extends StatelessWidget {
                               child: const Icon(
                                 Icons.account_circle_outlined,
                                 size: 100,
+                                color: style.Colors.mainColor,
                               )),
                           Column(
                             children: <Widget>[
@@ -89,6 +91,7 @@ class ProfileApp extends StatelessWidget {
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 20,
+                                    color: style.Colors.textMain,
                                   ),
                                 ),
                               ),
@@ -109,6 +112,7 @@ class ProfileApp extends StatelessWidget {
                                     style: const TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.w700,
+                                      color: style.Colors.textMain,
                                     ),
                                   ),
                                 ),
@@ -122,7 +126,10 @@ class ProfileApp extends StatelessWidget {
                         child: const Text(
                           'ИИН',
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w400),
+                            color: style.Colors.textMain,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                       state.loadedUser?.iin != null
@@ -132,7 +139,9 @@ class ProfileApp extends StatelessWidget {
                               child: Text(
                                 '${state.loadedUser?.iin}',
                                 style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w700),
+                                    color: style.Colors.textMain,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700),
                               ),
                             )
                           : EmptyText(),
@@ -141,7 +150,9 @@ class ProfileApp extends StatelessWidget {
                         child: const Text(
                           'Логин',
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w400),
+                              color: style.Colors.textMain,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
                         ),
                       ),
                       Container(
@@ -150,7 +161,9 @@ class ProfileApp extends StatelessWidget {
                         child: Text(
                           state.loadedUser.username,
                           style: const TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
+                              color: style.Colors.textMain,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700),
                         ),
                       ),
                       Container(
@@ -158,7 +171,9 @@ class ProfileApp extends StatelessWidget {
                         child: const Text(
                           'Номер телефона',
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w400),
+                              color: style.Colors.textMain,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
                         ),
                       ),
                       state.loadedUser?.phone != null
@@ -168,7 +183,9 @@ class ProfileApp extends StatelessWidget {
                               child: Text(
                                 '${state.loadedUser?.phone}',
                                 style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w700),
+                                    color: style.Colors.textMain,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700),
                               ),
                             )
                           : EmptyText(),
@@ -178,7 +195,9 @@ class ProfileApp extends StatelessWidget {
                         child: const Text(
                           'E-mail',
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w400),
+                              color: style.Colors.textMain,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
                         ),
                       ),
                       state.loadedUser?.email != null
@@ -188,7 +207,9 @@ class ProfileApp extends StatelessWidget {
                               child: Text(
                                 '${state.loadedUser?.email}',
                                 style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w700),
+                                    color: style.Colors.textMain,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700),
                               ),
                             )
                           : EmptyText(),
@@ -197,7 +218,9 @@ class ProfileApp extends StatelessWidget {
                         child: const Text(
                           'Класс',
                           style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w400),
+                              color: style.Colors.textMain,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
                         ),
                       ),
                       state.loadedUser?.grade != null
@@ -207,7 +230,9 @@ class ProfileApp extends StatelessWidget {
                               child: Text(
                                 '${state.loadedUser?.grade}',
                                 style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w700),
+                                    color: style.Colors.textMain,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700),
                               ),
                             )
                           : EmptyText(),
@@ -218,7 +243,9 @@ class ProfileApp extends StatelessWidget {
                               child: const Text(
                                 'Классный руководитель',
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w400),
+                                    color: style.Colors.textMain,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400),
                               ),
                             )
                           : const SizedBox(),
@@ -229,7 +256,9 @@ class ProfileApp extends StatelessWidget {
                               child: const Text(
                                 'Алиев Иманбек Серикович',
                                 style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w700),
+                                    color: style.Colors.textMain,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700),
                               ),
                             )
                           : const SizedBox(),

@@ -16,7 +16,7 @@ class Colors {
   static const Color elementBack = Color(0xfff1efef);
   static const Color titleColor = Color(0xFF061857);
   static const Color subTitle = Color(0xFFa4adbe);
-  static const Color textMain = Color(0xFF848484);
+  static const Color textMain = Color.fromRGBO(28, 28, 32, 1);
   static const Color greyBack = Color(0xFFced4db);
   static const Color grey = Color(0xFFb4bdce);
   static const Color greyForm = Color(0xFFcaced4);
