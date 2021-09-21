@@ -1,13 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:skud/services/user_api_provider.dart';
+import 'package:skud/services/visit_api_provider.dart';
 
-class UserRepository {
+class MainRepository {
   static String mainUrl = "https://api.skud.codetau.com/api";
   var loginUrl = '$mainUrl/v1/token';
-
   final FlutterSecureStorage storage = const FlutterSecureStorage();
   final Dio _dio = Dio();
+}
+
+class UserRepository extends MainRepository {
   final UserProvider _userProvider = UserProvider();
 
   Future<bool> hasToken() async {
@@ -49,5 +52,15 @@ class UserRepository {
   Future<dynamic> getUser() async {
     var token = await getToken();
     return await _userProvider.getUser(token);
+  }
+}
+
+class VisitRepository extends MainRepository {
+  final VisitProvider _visitProvider = VisitProvider();
+  final UserRepository _userRepository = UserRepository();
+
+  Future<dynamic> getVisits() async {
+    var token = await _userRepository.getToken();
+    return await _visitProvider.getVisits(token);
   }
 }

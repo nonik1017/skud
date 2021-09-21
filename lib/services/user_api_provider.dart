@@ -13,7 +13,7 @@ class UserProvider {
     Response response = await _dio.get(userUrl);
 
     if (response.statusCode == 200) {
-      print('-----response.data: ${response.data}-----');
+      // print('-----response.data: ${response.data}-----');
       Map<String, dynamic> userJson = Map<String, dynamic>.from(response.data);
       return User.fromJson(userJson);
     } else {
