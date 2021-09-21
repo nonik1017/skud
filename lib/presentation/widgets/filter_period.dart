@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 class FilterPeriodApp extends StatefulWidget {
   const FilterPeriodApp({Key? key}) : super(key: key);
 
+  get selectedFromDate => null;
+
   @override
   FilterPeriodState createState() => FilterPeriodState();
 }
@@ -169,33 +171,33 @@ class FilterPeriodState extends State<FilterPeriodApp> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 20, left: 15),
-                    width: 97,
-                    height: 40,
-                    child: ElevatedButton(
-                      onPressed: () => {},
-                      style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      side: const BorderSide(
-                                          color: Color.fromRGBO(
-                                              28, 28, 32, 0.05)))),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              const Color.fromRGBO(28, 28, 32, 0.05)),
-                          elevation: MaterialStateProperty.all<double?>(0)),
-                      child: const Text(
-                        'Отмена',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   margin: const EdgeInsets.only(top: 20, left: 15),
+                  //   width: 97,
+                  //   height: 40,
+                  //   child: ElevatedButton(
+                  //     onPressed: () => {},
+                  //     style: ButtonStyle(
+                  //         shape:
+                  //             MaterialStateProperty.all<RoundedRectangleBorder>(
+                  //                 RoundedRectangleBorder(
+                  //                     borderRadius: BorderRadius.circular(8.0),
+                  //                     side: const BorderSide(
+                  //                         color: Color.fromRGBO(
+                  //                             28, 28, 32, 0.05)))),
+                  //         backgroundColor: MaterialStateProperty.all<Color>(
+                  //             const Color.fromRGBO(28, 28, 32, 0.05)),
+                  //         elevation: MaterialStateProperty.all<double?>(0)),
+                  //     child: const Text(
+                  //       'Отмена',
+                  //       style: TextStyle(
+                  //         fontSize: 15,
+                  //         fontWeight: FontWeight.w600,
+                  //         color: Colors.black,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ],

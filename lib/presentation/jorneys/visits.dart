@@ -52,16 +52,15 @@ class VisitsState extends State<VisitsApp> {
 
               if (state is VisitLoadedState) {
                 return Scaffold(
-                  appBar: AppBar(
-                    elevation: 0,
-                    centerTitle: true,
-                    backgroundColor: Colors.white,
-                    iconTheme:
-                        const IconThemeData(color: Colors.black, size: 40),
-                  ),
-                  drawer: SideDrawer(),
-                  body: ListView(
-                    children: [
+                    appBar: AppBar(
+                      elevation: 0,
+                      centerTitle: true,
+                      backgroundColor: Colors.white,
+                      iconTheme:
+                          const IconThemeData(color: Colors.black, size: 40),
+                    ),
+                    drawer: SideDrawer(),
+                    body: ListView(children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -111,7 +110,7 @@ class VisitsState extends State<VisitsApp> {
                         children: [
                           Container(
                               margin: const EdgeInsets.only(top: 20),
-                              child: const Text(
+                              child: Text(
                                 'Дата',
                                 style: TextStyle(
                                   fontSize: 14,
@@ -140,103 +139,90 @@ class VisitsState extends State<VisitsApp> {
                           ),
                         ],
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Expanded(
-                            child: ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemCount: state.loadedVisit.length,
-                              itemBuilder: (BuildContext context, int index) =>
-                                  Column(
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(top: 25),
-                                    child: Text(
-                                      state.loadedVisit[index].actualDate,
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemCount: state.loadedVisit.length,
-                              itemBuilder: (BuildContext context, int index) =>
-                                  Column(
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(top: 25),
-                                    child: Text(
-                                      state.loadedVisit[index].time,
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemCount: state.loadedVisit.length,
-                              itemBuilder: (BuildContext context, int index) =>
-                                  Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Transform.translate(
-                                        offset: const Offset(0, -4),
-                                        child: Container(
-                                            height: 11,
-                                            width: 11,
-                                            margin: const EdgeInsets.only(
-                                                right: 15),
-                                            decoration: const BoxDecoration(
-                                                color: Color.fromRGBO(
-                                                    88, 186, 171, 1),
-                                                shape: BoxShape.circle)),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(top: 25),
-                                        child: Text(
-                                          state.loadedVisit[index].type ==
-                                                  'entrance'
-                                              ? 'Вход'
-                                              : 'Выход',
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
-                                          ),
+                      SingleChildScrollView(
+                        child: Expanded(
+                          child: ListView.builder(
+                            // scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: state.loadedVisit.length,
+                            itemBuilder: (BuildContext context, int index) =>
+                                Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Column(
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(top: 25),
+                                      child: Text(
+                                        state.loadedVisit[index].actualDate,
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700,
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(top: 25),
+                                      child: Text(
+                                        state.loadedVisit[index].time,
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Transform.translate(
+                                          offset: const Offset(0, -4),
+                                          child: Container(
+                                              height: 11,
+                                              width: 11,
+                                              margin: const EdgeInsets.only(
+                                                  right: 15),
+                                              decoration: const BoxDecoration(
+                                                  color: Color.fromRGBO(
+                                                      88, 186, 171, 1),
+                                                  shape: BoxShape.circle)),
+                                        ),
+                                        Container(
+                                          margin:
+                                              const EdgeInsets.only(top: 25),
+                                          child: Text(
+                                            state.loadedVisit[index].type ==
+                                                    'entrance'
+                                                ? 'Вход'
+                                                : 'Выход',
+                                            style: const TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ],
-                  ),
-                );
+                    ]));
               } //endif
 
               if (state is VisitEmptyState) {

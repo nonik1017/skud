@@ -6,6 +6,7 @@ import 'package:skud/presentation/jorneys/parents.dart';
 import 'package:skud/presentation/jorneys/profile.dart';
 import 'package:skud/presentation/jorneys/transactions.dart';
 import 'package:skud/presentation/jorneys/visits.dart';
+import 'package:skud/presentation/themes/theme.dart' as style;
 
 class SideDrawer extends StatefulWidget {
   const SideDrawer({Key? key}) : super(key: key);
@@ -61,13 +62,12 @@ class _SideDrawerState extends State<SideDrawer> {
                       leading: Transform.translate(
                         offset: const Offset(0, 8),
                         child: Transform.scale(
-                          scale: 1.6,
-                          child: Image.asset(
-                            'assets/images/avatar.png',
-                            height: 70,
-                            width: 70,
-                          ),
-                        ),
+                            scale: 1.6,
+                            child: const Icon(
+                              Icons.account_circle_outlined,
+                              size: 60,
+                              color: style.Colors.mainColor,
+                            )),
                       ),
                       title: const Text(
                         "Здравствуйте,",

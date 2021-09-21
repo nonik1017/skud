@@ -3,7 +3,7 @@ import 'package:skud/models/visit.dart';
 
 class VisitProvider {
   static String mainUrl = "https://api.skud.codetau.com/api";
-  var visitUrl = '$mainUrl/v1/visits';
+  var visitUrl = '$mainUrl/v1/visits?page_size=9999999&page=1';
 
   Future<dynamic> getVisits(token) async {
     final Dio _dio = Dio();
