@@ -189,15 +189,28 @@ class VisitsState extends State<VisitsApp> {
                                       children: [
                                         Transform.translate(
                                           offset: const Offset(0, -4),
-                                          child: Container(
-                                              height: 11,
-                                              width: 11,
-                                              margin: const EdgeInsets.only(
-                                                  right: 15),
-                                              decoration: const BoxDecoration(
-                                                  color: Color.fromRGBO(
-                                                      88, 186, 171, 1),
-                                                  shape: BoxShape.circle)),
+                                          child: state.loadedVisit[index].type ==
+                                                  'entrance'
+                                              ? Container(
+                                                  height: 11,
+                                                  width: 11,
+                                                  margin: const EdgeInsets.only(
+                                                      right: 15),
+                                                  decoration: const BoxDecoration(
+                                                      color: Color.fromRGBO(
+                                                          88, 186, 171, 1),
+                                                      shape: BoxShape.circle))
+                                              : Container(
+                                                  height: 11,
+                                                  width: 11,
+                                                  margin: const EdgeInsets.only(
+                                                      right: 15),
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                          color: Color.fromRGBO(
+                                                              253, 82, 67, 1),
+                                                          shape:
+                                                              BoxShape.circle)),
                                         ),
                                         Container(
                                           margin:
