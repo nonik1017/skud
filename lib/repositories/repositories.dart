@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:skud/services/parent_api_provider.dart';
 import 'package:skud/services/transaction_api_provider.dart';
 import 'package:skud/services/user_api_provider.dart';
 import 'package:skud/services/visit_api_provider.dart';
@@ -72,8 +73,16 @@ class TransactionRepository extends MainRepository {
 
   Future<dynamic> getTransactions() async {
     var token = await _userRepository.getToken();
-    print(
-        '_transactionProvider.getTransactions: ${_transactionProvider.getTransactions(token)}');
     return await _transactionProvider.getTransactions(token);
+  }
+}
+
+class ParentRepository extends MainRepository {
+  final ParentProvider _parentProvider = ParentProvider();
+  final UserRepository _userRepository = UserRepository();
+
+  Future<dynamic> getParents() async {
+    var token = await _userRepository.getToken();
+    return await _parentProvider.getParents(token);
   }
 }

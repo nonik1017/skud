@@ -16,7 +16,6 @@ class TransactionProvider extends Provider {
           .map((json) => Transaction.fromJson(json))
           .toList();
     } else {
-      print('--------------200 emes');
       throw Exception('Error transactions fetching');
     }
   }

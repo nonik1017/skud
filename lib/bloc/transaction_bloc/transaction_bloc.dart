@@ -14,16 +14,13 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   Stream<TransactionState> mapEventToState(TransactionEvent event) async* {
     if (event is TransactionLoadEvent) {
       yield TransactionLoadingState();
-      print('---------loading...');
 
       try {
         final dynamic loadedTransaction =
             await TransactionRepository().getTransactions();
-        print('loadedTransaction : $loadedTransaction');
         yield TransactionLoadedState(loadedTransaction: loadedTransaction);
       } catch (e) {
-        print('Error: $e');
-        // yield TransactionEmptyState();
+        yield TransactionEmptyState();
       }
     }
   }
