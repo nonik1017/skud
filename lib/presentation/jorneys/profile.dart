@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:skud/bloc/auth_bloc/auth.dart';
 import 'package:skud/bloc/user_bloc/user_bloc.dart';
 import 'package:skud/bloc/user_bloc/user_event.dart';
@@ -50,15 +51,6 @@ class ProfileApp extends StatelessWidget {
                     iconTheme:
                         const IconThemeData(color: Colors.black, size: 40),
                     actions: [
-                      // Container(
-                      //   margin: const EdgeInsets.only(right: 10),
-                      //   child: IconButton(
-                      //       onPressed: () => {},
-                      //       icon: const Icon(
-                      //         Icons.notifications_none_rounded,
-                      //         size: 30,
-                      //       )),
-                      // ),
                       IconButton(
                           icon: Icon(Icons.logout_outlined),
                           onPressed: () {
@@ -76,10 +68,10 @@ class ProfileApp extends StatelessWidget {
                         children: [
                           Container(
                               margin: const EdgeInsets.only(top: 30, left: 40),
-                              child: const Icon(
-                                Icons.account_circle_outlined,
-                                size: 100,
-                                color: style.Colors.mainColor,
+                              child: SvgPicture.asset(
+                                "assets/images/avatar.svg",
+                                width: 100,
+                                height: 100,
                               )),
                           Column(
                             children: <Widget>[

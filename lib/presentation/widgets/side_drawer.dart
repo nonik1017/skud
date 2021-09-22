@@ -6,7 +6,6 @@ import 'package:skud/presentation/jorneys/parents.dart';
 import 'package:skud/presentation/jorneys/profile.dart';
 import 'package:skud/presentation/jorneys/transactions.dart';
 import 'package:skud/presentation/jorneys/visits.dart';
-import 'package:skud/presentation/themes/theme.dart' as style;
 
 class SideDrawer extends StatefulWidget {
   const SideDrawer({Key? key}) : super(key: key);
@@ -16,15 +15,18 @@ class SideDrawer extends StatefulWidget {
 }
 
 class _SideDrawerState extends State<SideDrawer> {
-  LanguageCharacter? _character = LanguageCharacter.ru;
-
+  final LanguageCharacter? _character = LanguageCharacter.ru;
   @override
   Widget build(BuildContext context) {
+    var padding = MediaQuery.of(context).padding;
+
     return Drawer(
       child: ListView(
         children: <Widget>[
           SizedBox(
-            height: 500,
+            height: MediaQuery.of(context).size.height -
+                padding.top -
+                padding.bottom,
             child: DrawerHeader(
               margin: EdgeInsets.zero,
               padding: EdgeInsets.zero,
@@ -60,13 +62,13 @@ class _SideDrawerState extends State<SideDrawer> {
                     margin: const EdgeInsets.only(top: 40, left: 10),
                     child: ListTile(
                       leading: Transform.translate(
-                        offset: const Offset(0, 8),
+                        offset: const Offset(-3, 7),
                         child: Transform.scale(
                             scale: 1.6,
-                            child: const Icon(
-                              Icons.account_circle_outlined,
-                              size: 60,
-                              color: style.Colors.mainColor,
+                            child: SvgPicture.asset(
+                              "assets/images/avatar.svg",
+                              width: 50,
+                              height: 50,
                             )),
                       ),
                       title: const Text(
@@ -251,91 +253,100 @@ class _SideDrawerState extends State<SideDrawer> {
                       // onTap: (){}
                     ),
                   ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 260),
+                    child: const Text(
+                      "© 2021 Все права защищены.",
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(top: 50, left: 25),
-            child: const Text(
-              "Язык",
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 15, left: 5),
-            child: RadioListTile<LanguageCharacter>(
-              title: const Text(
-                'English (En)',
-                style: TextStyle(fontSize: 16),
-              ),
-              value: LanguageCharacter.en,
-              groupValue: _character,
-              activeColor: const Color.fromRGBO(88, 186, 171, 1),
-              onChanged: (LanguageCharacter? value) {
-                setState(() {
-                  _character = value;
-                });
-              },
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 5, left: 5),
-            child: RadioListTile<LanguageCharacter>(
-              title: const Text(
-                'Русский',
-                style: TextStyle(fontSize: 16),
-              ),
-              value: LanguageCharacter.ru,
-              groupValue: _character,
-              activeColor: const Color.fromRGBO(88, 186, 171, 1),
-              onChanged: (LanguageCharacter? value) {
-                setState(() {
-                  _character = value;
-                });
-              },
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 50, left: 25),
-            child: const Text(
-              "Помощь",
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 30, left: 25),
-            child: const Text(
-              "Служба поддержки",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 30, left: 25),
-            child: const Text(
-              "Условия и положения",
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 75, left: 25, bottom: 45),
-            child: const Text(
-              "© 2021 Все права защищены.",
-              style: TextStyle(
-                fontSize: 14,
-              ),
-            ),
-          ),
+          // Container(
+          //   margin: const EdgeInsets.only(top: 50, left: 25),
+          //   child: const Text(
+          //     "Язык",
+          //     style: TextStyle(
+          //       fontWeight: FontWeight.w600,
+          //       fontSize: 18,
+          //     ),
+          //   ),
+          // ),
+          // Container(
+          //   margin: const EdgeInsets.only(top: 15, left: 5),
+          //   child: RadioListTile<LanguageCharacter>(
+          //     title: const Text(
+          //       'English (En)',
+          //       style: TextStyle(fontSize: 16),
+          //     ),
+          //     value: LanguageCharacter.en,
+          //     groupValue: _character,
+          //     activeColor: const Color.fromRGBO(88, 186, 171, 1),
+          //     onChanged: (LanguageCharacter? value) {
+          //       setState(() {
+          //         _character = value;
+          //       });
+          //     },
+          //   ),
+          // ),
+          // Container(
+          //   margin: const EdgeInsets.only(top: 5, left: 5),
+          //   child: RadioListTile<LanguageCharacter>(
+          //     title: const Text(
+          //       'Русский',
+          //       style: TextStyle(fontSize: 16),
+          //     ),
+          //     value: LanguageCharacter.ru,
+          //     groupValue: _character,
+          //     activeColor: const Color.fromRGBO(88, 186, 171, 1),
+          //     onChanged: (LanguageCharacter? value) {
+          //       setState(() {
+          //         _character = value;
+          //       });
+          //     },
+          //   ),
+          // ),
+          // Container(
+          //   margin: const EdgeInsets.only(top: 50, left: 25),
+          //   child: const Text(
+          //     "Помощь",
+          //     style: TextStyle(
+          //       fontWeight: FontWeight.w600,
+          //       fontSize: 18,
+          //     ),
+          //   ),
+          // ),
+          // Container(
+          //   margin: const EdgeInsets.only(top: 30, left: 25),
+          //   child: const Text(
+          //     "Служба поддержки",
+          //     style: TextStyle(
+          //       fontSize: 16,
+          //     ),
+          //   ),
+          // ),
+          // Container(
+          //   margin: const EdgeInsets.only(top: 30, left: 25),
+          //   child: const Text(
+          //     "Условия и положения",
+          //     style: TextStyle(
+          //       fontSize: 16,
+          //     ),
+          //   ),
+          // ),
+          // Container(
+          //   margin: const EdgeInsets.only(top: 240, left: 25, bottom: 45),
+          //   child: const Text(
+          //     "© 2021 Все права защищены.",
+          //     style: TextStyle(
+          //       fontSize: 14,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
