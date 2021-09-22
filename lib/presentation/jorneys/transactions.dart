@@ -37,12 +37,77 @@ class TransactionsState extends State<TransactionsApp> {
           home: BlocBuilder<TransactionBloc, TransactionState>(
             builder: (context, state) {
               if (state is TransactionEmptyState) {
-                return const Center(
-                  child: Text(
-                    'No data recieved',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                );
+                return Scaffold(
+                    appBar: AppBar(
+                      elevation: 0,
+                      centerTitle: true,
+                      backgroundColor: Colors.white,
+                      iconTheme:
+                          const IconThemeData(color: Colors.black, size: 40),
+                      actions: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 10),
+                          child: IconButton(
+                              onPressed: () => {},
+                              icon: const Icon(
+                                Icons.notifications_none_rounded,
+                                size: 30,
+                              )),
+                        ),
+                      ],
+                    ),
+                    drawer: SideDrawer(),
+                    body: ListView(children: [
+                      SizedBox(
+                        height: 100,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                              margin: const EdgeInsets.only(top: 20),
+                              child: const Text(
+                                'Дата',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              )),
+                          Container(
+                            margin: const EdgeInsets.only(top: 20),
+                            child: const Text(
+                              "Время",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 20),
+                            child: const Text(
+                              "Сумма",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 50),
+                        child: Center(
+                          child: Text(
+                            'No data recieved',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]));
               }
 
               if (state is TransactionLoadingState) {
@@ -203,8 +268,7 @@ class TransactionsState extends State<TransactionsApp> {
                                           margin:
                                               const EdgeInsets.only(top: 25),
                                           child: Text(
-                                            state.loadedTransaction[index]
-                                                .amount,
+                                            '${state.loadedTransaction[index].amount}',
                                             style: const TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w700,
@@ -213,15 +277,29 @@ class TransactionsState extends State<TransactionsApp> {
                                         ),
                                         Transform.translate(
                                           offset: const Offset(0, -4),
-                                          child: Container(
-                                              height: 11,
-                                              width: 11,
-                                              margin: const EdgeInsets.only(
-                                                  left: 15),
-                                              decoration: const BoxDecoration(
-                                                  color: Color.fromRGBO(
-                                                      253, 82, 67, 1),
-                                                  shape: BoxShape.circle)),
+                                          child: state.loadedTransaction[index]
+                                                      .status ==
+                                                  'completed'
+                                              ? Container(
+                                                  height: 11,
+                                                  width: 11,
+                                                  margin: const EdgeInsets.only(
+                                                      left: 15),
+                                                  decoration: const BoxDecoration(
+                                                      color: Color.fromRGBO(
+                                                          88, 186, 171, 1),
+                                                      shape: BoxShape.circle))
+                                              : Container(
+                                                  height: 11,
+                                                  width: 11,
+                                                  margin: const EdgeInsets.only(
+                                                      left: 15),
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                          color: Color.fromRGBO(
+                                                              253, 82, 67, 1),
+                                                          shape:
+                                                              BoxShape.circle)),
                                         ),
                                       ],
                                     ),

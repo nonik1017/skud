@@ -72,6 +72,8 @@ class TransactionRepository extends MainRepository {
 
   Future<dynamic> getTransactions() async {
     var token = await _userRepository.getToken();
+    print(
+        '_transactionProvider.getTransactions: ${_transactionProvider.getTransactions(token)}');
     return await _transactionProvider.getTransactions(token);
   }
 }
