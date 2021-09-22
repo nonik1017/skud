@@ -1,10 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:skud/models/visit.dart';
+import 'package:skud/services/api_provider.dart';
 
-class VisitProvider {
-  static String mainUrl = "https://api.skud.codetau.com/api";
-  var visitUrl = '$mainUrl/v1/visits?page_size=9999999&page=1';
-
+class VisitProvider extends Provider {
   Future<dynamic> getVisits(token) async {
     final Dio _dio = Dio();
     _dio.options.headers['Accept'] = 'application/json';

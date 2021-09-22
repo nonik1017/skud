@@ -1,10 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:skud/models/user.dart';
+import 'package:skud/services/api_provider.dart';
 
-class UserProvider {
-  static String mainUrl = "https://api.skud.codetau.com/api";
-  var userUrl = '$mainUrl/v1/auth/user';
-
+class UserProvider extends Provider {
   Future<dynamic> getUser(token) async {
     final Dio _dio = Dio();
     _dio.options.headers['Accept'] = 'application/json';
