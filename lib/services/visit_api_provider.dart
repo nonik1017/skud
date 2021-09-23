@@ -17,4 +17,29 @@ class VisitProvider extends Provider {
       throw Exception('Error visits fetching');
     }
   }
+
+  Future<dynamic> getFilteredVisits(
+    token,
+    selectedFromDate,
+    selectedToDate,
+  ) async {
+    print('visit_api_provider');
+    final Dio _dio = Dio();
+    _dio.options.headers['Accept'] = 'application/json';
+    _dio.options.headers["Authorization"] = "Bearer $token";
+    print('URL: ${filterVisitUrl(
+      selectedFromDate,
+      selectedToDate,
+    )}');
+    Response response = await _dio.get(filterVisitUrl(
+      selectedFromDate,
+      selectedToDate,
+    ));
+    if (response.statusCode == 200) {
+      List<dynamic> visitsJson = List<dynamic>.from(response.data);
+      return visitsJson.map((json) => Visit.fromJson(json)).toList();
+    } else {
+      throw Exception('Error visits fetching');
+    }
+  }
 }

@@ -1,6 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skud/bloc/visit_bloc/visit_bloc.dart';
+import 'package:skud/bloc/visit_bloc/visit_event.dart';
 
 class FilterPeriodApp extends StatefulWidget {
   const FilterPeriodApp({Key? key}) : super(key: key);
@@ -33,6 +36,7 @@ class FilterPeriodState extends State<FilterPeriodApp> {
     if (fromPicked != null && fromPicked != selectedFromDate) {
       setState(() {
         selectedFromDate = fromPicked;
+        _onVisitFilterButtonPressed(selectedFromDate, selectedToDate);
       });
     }
 
@@ -41,8 +45,20 @@ class FilterPeriodState extends State<FilterPeriodApp> {
         selectedToDate = selectedToDate.isBefore(selectedFromDate)
             ? selectedFromDate
             : toPicked;
+
+        _onVisitFilterButtonPressed(selectedFromDate, selectedToDate);
       });
     }
+  }
+
+  _onVisitFilterButtonPressed(selectedFromDate, selectedToDate) {
+    print('_onVisitFilterButtonPressed');
+    BlocProvider.of<VisitBloc>(context).add(
+      VisitFilterButtonPressed(
+        selectedFromDate: selectedFromDate.toString(),
+        selectedToDate: selectedToDate.toString(),
+      ),
+    );
   }
 
   @override

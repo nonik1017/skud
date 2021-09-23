@@ -36,12 +36,101 @@ class VisitsState extends State<VisitsApp> {
           home: BlocBuilder<VisitBloc, VisitState>(
             builder: (context, state) {
               if (state is VisitEmptyState) {
-                return const Center(
-                  child: Text(
-                    'No data recieved',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                );
+                return Scaffold(
+                    appBar: AppBar(
+                      elevation: 0,
+                      centerTitle: true,
+                      backgroundColor: Colors.white,
+                      iconTheme:
+                          const IconThemeData(color: Colors.black, size: 40),
+                    ),
+                    drawer: SideDrawer(),
+                    body: ListView(children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(left: 40),
+                            padding: const EdgeInsets.only(top: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        if (filterTapped) {
+                                          tableMarginTop = 170;
+                                          filterTapped = false;
+                                        } else {
+                                          tableMarginTop = 20;
+                                          filterTapped = true;
+                                        }
+                                      });
+                                    },
+                                    icon:
+                                        const Icon(Icons.filter_alt_outlined)),
+                                const Text(
+                                  'Фильтр',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      filterTapped
+                          ? Container(
+                              height: 150,
+                              margin: const EdgeInsets.only(top: 5),
+                              decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(88, 186, 171, 0.06)),
+                              child: const FilterPeriodApp(),
+                            )
+                          : Container(),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                              margin: const EdgeInsets.only(top: 20),
+                              child: Text(
+                                'Дата',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              )),
+                          Container(
+                            margin: const EdgeInsets.only(top: 20),
+                            child: const Text(
+                              "Время",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 20),
+                            child: const Text(
+                              "Тип",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SingleChildScrollView(
+                        child: Expanded(
+                            child: Center(
+                          child: Text('No data recieved'),
+                        )),
+                      ),
+                    ]));
               }
 
               if (state is VisitLoadingState) {
