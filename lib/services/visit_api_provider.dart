@@ -23,14 +23,9 @@ class VisitProvider extends Provider {
     selectedFromDate,
     selectedToDate,
   ) async {
-    print('visit_api_provider');
     final Dio _dio = Dio();
     _dio.options.headers['Accept'] = 'application/json';
     _dio.options.headers["Authorization"] = "Bearer $token";
-    print('URL: ${filterVisitUrl(
-      selectedFromDate,
-      selectedToDate,
-    )}');
     Response response = await _dio.get(filterVisitUrl(
       selectedFromDate,
       selectedToDate,

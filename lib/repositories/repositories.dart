@@ -65,8 +65,6 @@ class VisitRepository extends MainRepository {
     String selectedFromDate,
     String selectedToDate,
   ) async {
-    print('visit_repository');
-
     var token = await _userRepository.getToken();
     return await _visitProvider.getFilteredVisits(
         token, selectedFromDate, selectedToDate);

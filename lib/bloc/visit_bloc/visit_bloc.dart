@@ -24,16 +24,13 @@ class VisitBloc extends Bloc<VisitEvent, VisitState> {
 
     if (event is VisitFilterButtonPressed) {
       yield VisitLoadingState();
-      print('VisitLoadingState');
       try {
         final dynamic fromDateParts = event.selectedFromDate.split(' ');
         final dynamic toDateParts = event.selectedToDate.split(' ');
-        print('preLoadedVisit');
         final dynamic loadedVisit = await visitRepository.getFilteredVisits(
           fromDateParts[0],
           toDateParts[0],
         );
-        print('loadedVisit: $loadedVisit');
         yield VisitLoadedState(loadedVisit: loadedVisit);
       } catch (e) {
         yield VisitEmptyState();

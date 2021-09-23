@@ -100,7 +100,7 @@ class ProfileApp extends StatelessWidget {
                                 child: Container(
                                   padding: EdgeInsets.symmetric(vertical: 5),
                                   child: Text(
-                                    '${state.loadedUser?.balance}',
+                                    '${state.loadedUser?.balance.toInt()} тг',
                                     style: const TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.w700,

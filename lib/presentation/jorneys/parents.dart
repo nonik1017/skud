@@ -56,17 +56,17 @@ class ParentsState extends State<ParentsApp> {
                     backgroundColor: Colors.white,
                     iconTheme:
                         const IconThemeData(color: Colors.black, size: 40),
-                    actions: [
-                      Container(
-                        margin: const EdgeInsets.only(right: 10),
-                        child: IconButton(
-                            onPressed: () => {},
-                            icon: const Icon(
-                              Icons.notifications_none_rounded,
-                              size: 30,
-                            )),
-                      ),
-                    ],
+                    // actions: [
+                    //   Container(
+                    //     margin: const EdgeInsets.only(right: 10),
+                    //     child: IconButton(
+                    //         onPressed: () => {},
+                    //         icon: const Icon(
+                    //           Icons.notifications_none_rounded,
+                    //           size: 30,
+                    //         )),
+                    //   ),
+                    // ],
                   ),
                   drawer: SideDrawer(),
                   body: SingleChildScrollView(
