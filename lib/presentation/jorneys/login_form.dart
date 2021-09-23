@@ -18,6 +18,7 @@ class _LoginFormState extends State<LoginForm> {
   _LoginFormState(this.userRepository);
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _passwordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +138,20 @@ class _LoginFormState extends State<LoginForm> {
                           borderRadius: BorderRadius.circular(8.0)),
                       contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
                       hintText: "Пароль",
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _passwordVisible = _passwordVisible ? false : true;
+                            print('pwdvsb: $_passwordVisible');
+                          });
+                        },
+                        icon: Icon(
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Theme.of(context).primaryColorDark,
+                        ),
+                      ),
                       hintStyle: const TextStyle(
                           fontSize: 12.0,
                           color: style.Colors.grey,
@@ -147,7 +162,7 @@ class _LoginFormState extends State<LoginForm> {
                           fontWeight: FontWeight.w500),
                     ),
                     autocorrect: false,
-                    obscureText: true,
+                    obscureText: !_passwordVisible,
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 30.0, bottom: 20.0),
