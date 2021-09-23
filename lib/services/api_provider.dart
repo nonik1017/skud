@@ -10,4 +10,10 @@ class Provider {
     selectedToDate,
   ) =>
       '$mainUrl/v1/visits?page_size=9999999&auth=1&from_date=$selectedFromDate&to_date=$selectedToDate';
+
+  dynamic filterTransactionUrl(
+    selectedFromDate,
+    selectedToDate,
+  ) =>
+      '$mainUrl/v1/transactions?page_size=9999999&auth=1&from_date=$selectedFromDate&to_date=$selectedToDate';
 }

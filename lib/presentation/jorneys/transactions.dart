@@ -178,7 +178,9 @@ class TransactionsState extends State<TransactionsApp> {
                               margin: const EdgeInsets.only(top: 5),
                               decoration: const BoxDecoration(
                                   color: Color.fromRGBO(88, 186, 171, 0.06)),
-                              child: const FilterPeriodApp(),
+                              child: const FilterPeriodApp(
+                                source: 'transactions',
+                              ),
                             )
                           : Container(),
                       Row(

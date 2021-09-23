@@ -23,5 +23,21 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
         yield TransactionEmptyState();
       }
     }
+
+    if (event is TransactionFilterButtonPressed) {
+      yield TransactionLoadingState();
+      try {
+        final dynamic fromDateParts = event.selectedFromDate.split(' ');
+        final dynamic toDateParts = event.selectedToDate.split(' ');
+        final dynamic loadedTransaction =
+            await transactionRepository.getFilteredTransactions(
+          fromDateParts[0],
+          toDateParts[0],
+        );
+        yield TransactionLoadedState(loadedTransaction: loadedTransaction);
+      } catch (e) {
+        yield TransactionEmptyState();
+      }
+    }
   }
 }

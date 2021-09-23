@@ -80,6 +80,15 @@ class TransactionRepository extends MainRepository {
   final TransactionProvider _transactionProvider = TransactionProvider();
   final UserRepository _userRepository = UserRepository();
 
+  Future<dynamic> getFilteredTransactions(
+    String selectedFromDate,
+    String selectedToDate,
+  ) async {
+    var token = await _userRepository.getToken();
+    return await _transactionProvider.getFilteredTransactions(
+        token, selectedFromDate, selectedToDate);
+  }
+
   Future<dynamic> getTransactions() async {
     var token = await _userRepository.getToken();
     return await _transactionProvider.getTransactions(token);
