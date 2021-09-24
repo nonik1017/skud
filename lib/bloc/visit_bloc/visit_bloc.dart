@@ -5,9 +5,11 @@ import 'package:skud/repositories/repositories.dart';
 
 class VisitBloc extends Bloc<VisitEvent, VisitState> {
   final VisitRepository visitRepository;
+  final UserRepository userRepository;
   // VisitBloc({required this.visitRepository}) : super(VisitEmptyState());
 
-  VisitBloc({required this.visitRepository}) : super(VisitLoadingState());
+  VisitBloc({required this.visitRepository, required this.userRepository})
+      : super(VisitLoadingState());
 
   @override
   Stream<VisitState> mapEventToState(VisitEvent event) async* {
@@ -16,7 +18,11 @@ class VisitBloc extends Bloc<VisitEvent, VisitState> {
 
       try {
         final dynamic loadedVisit = await visitRepository.getVisits();
-        yield VisitLoadedState(loadedVisit: loadedVisit);
+        final dynamic loadedUser = await userRepository.getUser();
+        yield VisitLoadedState(
+          loadedVisit: loadedVisit,
+          loadedUser: loadedUser,
+        );
       } catch (_) {
         yield VisitEmptyState();
       }
@@ -25,13 +31,17 @@ class VisitBloc extends Bloc<VisitEvent, VisitState> {
     if (event is VisitFilterButtonPressed) {
       yield VisitLoadingState();
       try {
+        final dynamic loadedUser = await userRepository.getUser();
         final dynamic fromDateParts = event.selectedFromDate.split(' ');
         final dynamic toDateParts = event.selectedToDate.split(' ');
         final dynamic loadedVisit = await visitRepository.getFilteredVisits(
           fromDateParts[0],
           toDateParts[0],
         );
-        yield VisitLoadedState(loadedVisit: loadedVisit);
+        yield VisitLoadedState(
+          loadedVisit: loadedVisit,
+          loadedUser: loadedUser,
+        );
       } catch (e) {
         yield VisitEmptyState();
       }
