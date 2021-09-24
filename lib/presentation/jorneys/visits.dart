@@ -44,7 +44,9 @@ class VisitsState extends State<VisitsApp> {
                       iconTheme:
                           const IconThemeData(color: Colors.black, size: 40),
                     ),
-                    drawer: SideDrawer(),
+                    drawer: const SideDrawer(
+                      role: 'student',
+                    ),
                     body: ListView(children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -150,7 +152,9 @@ class VisitsState extends State<VisitsApp> {
                       iconTheme:
                           const IconThemeData(color: Colors.black, size: 40),
                     ),
-                    drawer: SideDrawer(),
+                    drawer: const SideDrawer(
+                      role: 'student',
+                    ),
                     body: ListView(children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

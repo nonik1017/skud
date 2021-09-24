@@ -60,7 +60,9 @@ class ProfileApp extends StatelessWidget {
                           })
                     ],
                   ),
-                  drawer: SideDrawer(),
+                  drawer: SideDrawer(
+                    role: state.loadedUser?.role,
+                  ),
                   body: ListView(
                     children: [
                       Row(

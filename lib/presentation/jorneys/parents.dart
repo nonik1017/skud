@@ -68,7 +68,9 @@ class ParentsState extends State<ParentsApp> {
                     //   ),
                     // ],
                   ),
-                  drawer: SideDrawer(),
+                  drawer: const SideDrawer(
+                    role: 'student',
+                  ),
                   body: SingleChildScrollView(
                     child: Expanded(
                       child: ListView.builder(

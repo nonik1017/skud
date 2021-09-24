@@ -56,7 +56,9 @@ class TransactionsState extends State<TransactionsApp> {
                       //   ),
                       // ],
                     ),
-                    drawer: SideDrawer(),
+                    drawer: const SideDrawer(
+                      role: 'student',
+                    ),
                     body: ListView(children: [
                       SizedBox(
                         height: 100,
@@ -136,7 +138,9 @@ class TransactionsState extends State<TransactionsApp> {
                       //   ),
                       // ],
                     ),
-                    drawer: SideDrawer(),
+                    drawer: const SideDrawer(
+                      role: 'student',
+                    ),
                     body: ListView(children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
