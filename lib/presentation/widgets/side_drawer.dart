@@ -141,7 +141,9 @@ class _SideDrawerState extends State<SideDrawer> {
                     const SideDrawerProfile(),
                     const SideDrawerVists(),
                     const SideDrawerTransactions(),
-                    const SideDrawerParents(),
+                    widget.role == 'student'
+                        ? const SideDrawerParents()
+                        : SizedBox(),
                     const SideDrawerRights(),
                   ],
                 ),
