@@ -114,6 +114,25 @@ class TransactionRepository extends MainRepository {
   }
 }
 
+class ChildTransactionRepository extends MainRepository {
+  final TransactionProvider _transactionProvider = TransactionProvider();
+  final UserRepository _userRepository = UserRepository();
+
+  Future<dynamic> getFilteredChildTransactions(
+    String selectedFromDate,
+    String selectedToDate,
+  ) async {
+    var token = await _userRepository.getToken();
+    return await _transactionProvider.getFilteredChildTransactions(
+        token, selectedFromDate, selectedToDate);
+  }
+
+  Future<dynamic> getChildTransactions() async {
+    var token = await _userRepository.getToken();
+    return await _transactionProvider.getChildTransactions(token);
+  }
+}
+
 class ParentRepository extends MainRepository {
   final ParentProvider _parentProvider = ParentProvider();
   final UserRepository _userRepository = UserRepository();

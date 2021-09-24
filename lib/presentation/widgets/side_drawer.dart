@@ -6,6 +6,7 @@ import 'package:skud/bloc/user_bloc/user_bloc.dart';
 import 'package:skud/bloc/user_bloc/user_event.dart';
 import 'package:skud/bloc/user_bloc/user_state.dart';
 import 'package:skud/presentation/jorneys/init.dart';
+import 'package:skud/presentation/widgets/side_drawer/side_drawer_child_transactions.dart';
 import 'package:skud/presentation/widgets/side_drawer/side_drawer_child_visits.dart';
 import 'package:skud/presentation/widgets/side_drawer/side_drawer_logo.dart';
 import 'package:skud/presentation/widgets/side_drawer/side_drawer_parents.dart';
@@ -145,10 +146,15 @@ class _SideDrawerState extends State<SideDrawer> {
                         ? const SideDrawerChildVisits()
                         : SizedBox(),
                     const SideDrawerTransactions(),
+                    widget.role == 'parent'
+                        ? const SideDrawerChildTransactions()
+                        : SizedBox(),
                     widget.role == 'student'
                         ? const SideDrawerParents()
                         : SizedBox(),
-                    const SideDrawerRights(),
+                    SideDrawerRights(
+                      role: widget.role,
+                    ),
                   ],
                 ),
               ),
