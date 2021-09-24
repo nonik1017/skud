@@ -5,9 +5,11 @@ import 'package:skud/repositories/repositories.dart';
 
 class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   final TransactionRepository transactionRepository;
+  final UserRepository userRepository;
   // TransactionBloc({required this.transactionRepository}) : super(TransactionEmptyState());
 
-  TransactionBloc({required this.transactionRepository})
+  TransactionBloc(
+      {required this.transactionRepository, required this.userRepository})
       : super(TransactionLoadingState());
 
   @override
@@ -16,9 +18,13 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       yield TransactionLoadingState();
 
       try {
+        final dynamic loadedUser = await userRepository.getUser();
         final dynamic loadedTransaction =
             await TransactionRepository().getTransactions();
-        yield TransactionLoadedState(loadedTransaction: loadedTransaction);
+        yield TransactionLoadedState(
+          loadedTransaction: loadedTransaction,
+          loadedUser: loadedUser,
+        );
       } catch (e) {
         yield TransactionEmptyState();
       }
@@ -27,6 +33,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     if (event is TransactionFilterButtonPressed) {
       yield TransactionLoadingState();
       try {
+        final dynamic loadedUser = await userRepository.getUser();
         final dynamic fromDateParts = event.selectedFromDate.split(' ');
         final dynamic toDateParts = event.selectedToDate.split(' ');
         final dynamic loadedTransaction =
@@ -34,7 +41,10 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
           fromDateParts[0],
           toDateParts[0],
         );
-        yield TransactionLoadedState(loadedTransaction: loadedTransaction);
+        yield TransactionLoadedState(
+          loadedTransaction: loadedTransaction,
+          loadedUser: loadedUser,
+        );
       } catch (e) {
         yield TransactionEmptyState();
       }

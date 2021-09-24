@@ -76,6 +76,25 @@ class VisitRepository extends MainRepository {
   }
 }
 
+class ChildVisitRepository extends MainRepository {
+  final VisitProvider _visitProvider = VisitProvider();
+  final UserRepository _userRepository = UserRepository();
+
+  Future<dynamic> getFilteredChildVisits(
+    String selectedFromDate,
+    String selectedToDate,
+  ) async {
+    var token = await _userRepository.getToken();
+    return await _visitProvider.getFilteredChildVisits(
+        token, selectedFromDate, selectedToDate);
+  }
+
+  Future<dynamic> getChildVisits() async {
+    var token = await _userRepository.getToken();
+    return await _visitProvider.getChildVisits(token);
+  }
+}
+
 class TransactionRepository extends MainRepository {
   final TransactionProvider _transactionProvider = TransactionProvider();
   final UserRepository _userRepository = UserRepository();

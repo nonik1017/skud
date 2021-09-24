@@ -2,31 +2,31 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skud/bloc/visit_bloc/visit_bloc.dart';
+import 'package:skud/bloc/visit_bloc/child_visit_bloc.dart';
 import 'package:skud/bloc/visit_bloc/visit_event.dart';
 import 'package:skud/bloc/visit_bloc/visit_state.dart';
 import 'package:skud/presentation/widgets/filter_period.dart';
 import 'package:skud/presentation/widgets/side_drawer.dart';
 import 'package:skud/repositories/repositories.dart';
 
-class VisitsApp extends StatefulWidget {
-  const VisitsApp({Key? key}) : super(key: key);
+class ChildVisitsApp extends StatefulWidget {
+  const ChildVisitsApp({Key? key}) : super(key: key);
 
   @override
-  VisitsState createState() => VisitsState();
+  ChildVisitsState createState() => ChildVisitsState();
 }
 
-class VisitsState extends State<VisitsApp> {
+class ChildVisitsState extends State<ChildVisitsApp> {
   bool filterTapped = false;
   double tableMarginTop = 20;
-  final visitRepository = VisitRepository();
+  final childVisitRepository = ChildVisitRepository();
   final userRepository = UserRepository();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<VisitBloc>(
-        create: (context) => VisitBloc(
-              visitRepository: visitRepository,
+    return BlocProvider<ChildVisitBloc>(
+        create: (context) => ChildVisitBloc(
+              childVisitRepository: childVisitRepository,
               userRepository: userRepository,
             )..add(VisitLoadEvent()),
         child: MaterialApp(
@@ -36,7 +36,7 @@ class VisitsState extends State<VisitsApp> {
             fontFamily: 'Rubik',
             primarySwatch: Colors.blueGrey,
           ),
-          home: BlocBuilder<VisitBloc, VisitState>(
+          home: BlocBuilder<ChildVisitBloc, VisitState>(
             builder: (context, state) {
               if (state is VisitEmptyState) {
                 return Scaffold(
@@ -92,7 +92,7 @@ class VisitsState extends State<VisitsApp> {
                               decoration: const BoxDecoration(
                                   color: Color.fromRGBO(88, 186, 171, 0.06)),
                               child: const FilterPeriodApp(
-                                source: 'visits',
+                                source: 'child_visits',
                               ),
                             )
                           : Container(),
@@ -202,7 +202,7 @@ class VisitsState extends State<VisitsApp> {
                               decoration: const BoxDecoration(
                                   color: Color.fromRGBO(88, 186, 171, 0.06)),
                               child: const FilterPeriodApp(
-                                source: 'visits',
+                                source: 'child_visits',
                               ),
                             )
                           : Container(),

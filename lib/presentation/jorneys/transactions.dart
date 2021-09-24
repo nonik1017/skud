@@ -20,13 +20,15 @@ class TransactionsState extends State<TransactionsApp> {
   bool filterTapped = false;
   double tableMarginTop = 20;
   final transactionRepository = TransactionRepository();
+  final userRepository = UserRepository();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TransactionBloc>(
-        create: (context) =>
-            TransactionBloc(transactionRepository: transactionRepository)
-              ..add(TransactionLoadEvent()),
+        create: (context) => TransactionBloc(
+              transactionRepository: transactionRepository,
+              userRepository: userRepository,
+            )..add(TransactionLoadEvent()),
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           locale: const Locale('mn', 'MN'),
@@ -138,8 +140,10 @@ class TransactionsState extends State<TransactionsApp> {
                       //   ),
                       // ],
                     ),
-                    drawer: const SideDrawer(
-                      role: 'student',
+                    drawer: SideDrawer(
+                      role: state.loadedUser.role != null
+                          ? '${state.loadedUser.role}'
+                          : 'student',
                     ),
                     body: ListView(children: [
                       Column(

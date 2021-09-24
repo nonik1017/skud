@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skud/bloc/transaction_bloc/transaction_bloc.dart';
 import 'package:skud/bloc/transaction_bloc/transaction_event.dart';
+import 'package:skud/bloc/visit_bloc/child_visit_bloc.dart';
 import 'package:skud/bloc/visit_bloc/visit_bloc.dart';
 import 'package:skud/bloc/visit_bloc/visit_event.dart';
 
@@ -62,6 +63,13 @@ class FilterPeriodState extends State<FilterPeriodApp> {
           selectedToDate: selectedToDate.toString(),
         ),
       );
+    } else if (widget.source == 'child_visits') {
+      BlocProvider.of<ChildVisitBloc>(context).add(
+        VisitFilterButtonPressed(
+          selectedFromDate: selectedFromDate.toString(),
+          selectedToDate: selectedToDate.toString(),
+        ),
+      );
     } else if (widget.source == 'transactions') {
       BlocProvider.of<TransactionBloc>(context).add(
         TransactionFilterButtonPressed(
@@ -78,6 +86,10 @@ class FilterPeriodState extends State<FilterPeriodApp> {
 
     if (widget.source == 'visits') {
       BlocProvider.of<VisitBloc>(context).add(
+        VisitLoadEvent(),
+      );
+    } else if (widget.source == 'child_visits') {
+      BlocProvider.of<ChildVisitBloc>(context).add(
         VisitLoadEvent(),
       );
     } else if (widget.source == 'transactions') {
