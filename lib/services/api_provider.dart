@@ -6,6 +6,7 @@ class Provider {
   var transactionUrl = '$mainUrl/v1/transactions?auth=1&page=1';
   var childTransactionUrl = '$mainUrl/v1/transactions?my_children=1&page=1';
   var parentsUrl = '$mainUrl/v1/users?my_parents=1';
+  var childrensUrl = '$mainUrl/v1/users';
 
   dynamic filterVisitUrl(
     selectedFromDate,

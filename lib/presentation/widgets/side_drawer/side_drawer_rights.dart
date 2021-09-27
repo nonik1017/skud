@@ -10,7 +10,7 @@ class SideDrawerRights extends StatelessWidget {
     return Container(
       margin: role == 'student'
           ? EdgeInsets.only(top: 260)
-          : EdgeInsets.only(top: 200),
+          : EdgeInsets.only(top: 140),
       child: const Text(
         "© 2021 Все права защищены.",
         style: TextStyle(
