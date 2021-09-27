@@ -1,8 +1,8 @@
 class User {
   int id;
-  double balance;
-  String username;
-  String role;
+  double? balance;
+  String? username;
+  String? role;
   String? cashbox;
   String? dateCreated;
   String? email;
