@@ -176,7 +176,7 @@ class ChildTransactionsState extends State<ChildTransactionsApp> {
                               decoration: const BoxDecoration(
                                   color: Color.fromRGBO(88, 186, 171, 0.06)),
                               child: const FilterPeriodApp(
-                                source: 'child_visits',
+                                source: 'child_transactions',
                               ),
                             )
                           : Container(),
