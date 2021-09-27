@@ -19,7 +19,6 @@ class Visit {
     final dynamic dateParts = json['actual_date'].split('T');
 
     Map<String, dynamic> userJson = Map<String, dynamic>.from(json['user']);
-    print('Visit.user: ${User.fromJson(userJson)}');
     return Visit(
         id: json['id'],
         actualDate: dateParts[0],
