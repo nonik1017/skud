@@ -78,94 +78,95 @@ class ChildrensState extends State<ChildrensApp> {
                     role: 'parent',
                   ),
                   body: SingleChildScrollView(
-                    child: Expanded(
-                      child: ListView.builder(
+                    child: Stack(
+                      children: [
+                        ListView.builder(
                           // scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: state.loadedChildren.length,
                           itemBuilder: (BuildContext context, int index) =>
                               Container(
-                                margin: const EdgeInsets.only(
-                                  left: 20,
-                                  right: 20,
-                                  top: 30,
-                                  bottom: 20,
-                                ),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: 1,
-                                    color: colors[index % 3],
-                                  ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Column(
+                            margin: const EdgeInsets.only(
+                              left: 20,
+                              right: 20,
+                              top: 30,
+                              bottom: 20,
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 2,
+                                color: colors[index % 3],
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
                                   children: [
-                                    Row(
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    const Icon(
+                                      Icons.account_circle_outlined,
+                                      size: 75,
+                                    ),
+                                    Column(
                                       children: [
                                         const SizedBox(
-                                          width: 10,
+                                          height: 10,
                                         ),
-                                        const Icon(
-                                          Icons.account_circle_outlined,
-                                          size: 75,
-                                        ),
-                                        Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 10,
+                                        Expanded(
+                                          child: Text(
+                                            '${state.loadedChildren[index].lastName} \n${state.loadedChildren[index].firstName} \n${state.loadedChildren[index].middleName}',
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 20,
                                             ),
-                                            Text(
-                                              '${state.loadedChildren[index].lastName} \n${state.loadedChildren[index].firstName} \n${state.loadedChildren[index].middleName}',
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        Container(
+                                          width: 120,
+                                          height: 37,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: const Color.fromRGBO(
+                                                246, 188, 0, 0.3),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              '${state.loadedChildren[index]?.balance.toInt()} тг',
                                               style: const TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 20,
-                                              ),
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 24),
                                             ),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
-                                            Container(
-                                              width: 120,
-                                              height: 37,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                color: const Color.fromRGBO(
-                                                    246, 188, 0, 0.3),
-                                              ),
-                                              child: Center(
-                                                child: Text(
-                                                  '${state.loadedChildren[index]?.balance.toInt()} тг',
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      fontSize: 24),
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
+                                          ),
+                                        )
                                       ],
                                     ),
-                                    ListTile(
-                                      title: const Text('ИИН'),
-                                      subtitle:
-                                          state.loadedChildren[index]?.iin !=
-                                                  null
-                                              ? Text(
-                                                  '${state.loadedChildren[index]?.iin}',
-                                                  style: const TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 18,
-                                                  ),
-                                                )
-                                              : const EmptyText(),
-                                    ),
-                                    ListTile(
-                                      title: const Text('Логин'),
-                                      subtitle: state.loadedChildren[index]
-                                                  ?.username !=
+                                  ],
+                                ),
+                                ListTile(
+                                  title: const Text('ИИН'),
+                                  subtitle:
+                                      state.loadedChildren[index]?.iin != null
+                                          ? Text(
+                                              '${state.loadedChildren[index]?.iin}',
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 18,
+                                              ),
+                                            )
+                                          : const EmptyText(),
+                                ),
+                                ListTile(
+                                  title: const Text('Логин'),
+                                  subtitle:
+                                      state.loadedChildren[index]?.username !=
                                               null
                                           ? Text(
                                               '${state.loadedChildren[index]?.username}',
@@ -175,66 +176,65 @@ class ChildrensState extends State<ChildrensApp> {
                                               ),
                                             )
                                           : const EmptyText(),
-                                    ),
-                                    ListTile(
-                                      title: const Text('Номер телефона'),
-                                      subtitle:
-                                          state.loadedChildren[index]?.phone !=
-                                                  null
-                                              ? Text(
-                                                  '${state.loadedChildren[index]?.phone}',
-                                                  style: const TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 18,
-                                                  ),
-                                                )
-                                              : const EmptyText(),
-                                    ),
-                                    ListTile(
-                                      title: const Text('E-mail'),
-                                      subtitle:
-                                          state.loadedChildren[index]?.email !=
-                                                  null
-                                              ? Text(
-                                                  '${state.loadedChildren[index]?.email}',
-                                                  style: const TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 18,
-                                                  ),
-                                                )
-                                              : const EmptyText(),
-                                    ),
-                                    ListTile(
-                                      title: const Text('Класс'),
-                                      subtitle:
-                                          state.loadedChildren[index]?.grade !=
-                                                  null
-                                              ? Text(
-                                                  '${state.loadedChildren[index]?.grade}',
-                                                  style: const TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 18,
-                                                  ),
-                                                )
-                                              : const EmptyText(),
-                                    ),
-                                    // ListTile(
-                                    //   title: Text('Классный руководитель'),
-                                    //   subtitle: state.loadedChildren[index]
-                                    //               ?.teacher !=
-                                    //           null
-                                    //       ? Text(
-                                    //           '${state.loadedChildren[index]?.teacher?.lastName} ${state.loadedChildren[index]?.teacher?.firstName} ${state.loadedChildren[index]?.teacher?.middleName}',
-                                    //           style: TextStyle(
-                                    //             fontWeight: FontWeight.w700,
-                                    //             fontSize: 18,
-                                    //           ),
-                                    //         )
-                                    //       : EmptyText(),
-                                    // ),
-                                  ],
                                 ),
-                              )),
+                                ListTile(
+                                  title: const Text('Номер телефона'),
+                                  subtitle:
+                                      state.loadedChildren[index]?.phone != null
+                                          ? Text(
+                                              '${state.loadedChildren[index]?.phone}',
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 18,
+                                              ),
+                                            )
+                                          : const EmptyText(),
+                                ),
+                                ListTile(
+                                  title: const Text('E-mail'),
+                                  subtitle:
+                                      state.loadedChildren[index]?.email != null
+                                          ? Text(
+                                              '${state.loadedChildren[index]?.email}',
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 18,
+                                              ),
+                                            )
+                                          : const EmptyText(),
+                                ),
+                                ListTile(
+                                  title: const Text('Класс'),
+                                  subtitle:
+                                      state.loadedChildren[index]?.grade != null
+                                          ? Text(
+                                              '${state.loadedChildren[index]?.grade}',
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 18,
+                                              ),
+                                            )
+                                          : const EmptyText(),
+                                ),
+                                // ListTile(
+                                //   title: Text('Классный руководитель'),
+                                //   subtitle: state.loadedChildren[index]
+                                //               ?.teacher !=
+                                //           null
+                                //       ? Text(
+                                //           '${state.loadedChildren[index]?.teacher?.lastName} ${state.loadedChildren[index]?.teacher?.firstName} ${state.loadedChildren[index]?.teacher?.middleName}',
+                                //           style: TextStyle(
+                                //             fontWeight: FontWeight.w700,
+                                //             fontSize: 18,
+                                //           ),
+                                //         )
+                                //       : EmptyText(),
+                                // ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 );

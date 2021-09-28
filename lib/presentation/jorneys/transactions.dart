@@ -227,97 +227,102 @@ class TransactionsState extends State<TransactionsApp> {
                         ],
                       ),
                       SingleChildScrollView(
-                        child: Expanded(
-                          child: ListView.builder(
-                            // scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: state.loadedTransaction.length,
-                            itemBuilder: (BuildContext context, int index) =>
-                                Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  children: [
-                                    Container(
-                                        margin: const EdgeInsets.only(top: 25),
-                                        child: Text(
-                                          state.loadedTransaction[index]
-                                              .actualDate,
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        )),
-                                  ],
-                                ),
-                                Column(
-                                  children: <Widget>[
-                                    Container(
-                                      margin: const EdgeInsets.only(top: 25),
-                                      child: Text(
-                                        state.loadedTransaction[index].time,
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Container(
+                        child: Stack(
+                          children: [
+                            ListView.builder(
+                              // scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: state.loadedTransaction.length,
+                              itemBuilder: (BuildContext context, int index) =>
+                                  Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Container(
                                           margin:
                                               const EdgeInsets.only(top: 25),
                                           child: Text(
-                                            '${state.loadedTransaction[index].amount}',
+                                            state.loadedTransaction[index]
+                                                .actualDate,
                                             style: const TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w700,
                                             ),
+                                          )),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: <Widget>[
+                                      Container(
+                                        margin: const EdgeInsets.only(top: 25),
+                                        child: Text(
+                                          state.loadedTransaction[index].time,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
                                           ),
                                         ),
-                                        Transform.translate(
-                                          offset: const Offset(0, -4),
-                                          child: state.loadedTransaction[index]
-                                                      .status ==
-                                                  'completed'
-                                              ? Container(
-                                                  height: 11,
-                                                  width: 11,
-                                                  margin: const EdgeInsets.only(
-                                                      left: 15),
-                                                  decoration: const BoxDecoration(
-                                                      color: Color.fromRGBO(
-                                                          88, 186, 171, 1),
-                                                      shape: BoxShape.circle))
-                                              : Container(
-                                                  height: 11,
-                                                  width: 11,
-                                                  margin: const EdgeInsets.only(
-                                                      left: 15),
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                          color: Color.fromRGBO(
-                                                              253, 82, 67, 1),
-                                                          shape:
-                                                              BoxShape.circle)),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: <Widget>[
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Container(
+                                            margin:
+                                                const EdgeInsets.only(top: 25),
+                                            child: Text(
+                                              '${state.loadedTransaction[index].amount}',
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ),
+                                          Transform.translate(
+                                            offset: const Offset(0, -4),
+                                            child: state.loadedTransaction[index].status ==
+                                                    'completed'
+                                                ? Container(
+                                                    height: 11,
+                                                    width: 11,
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            left: 15),
+                                                    decoration: const BoxDecoration(
+                                                        color: Color.fromRGBO(
+                                                            88, 186, 171, 1),
+                                                        shape: BoxShape.circle))
+                                                : Container(
+                                                    height: 11,
+                                                    width: 11,
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            left: 15),
+                                                    decoration: const BoxDecoration(
+                                                        color: Color.fromRGBO(
+                                                            253, 82, 67, 1),
+                                                        shape:
+                                                            BoxShape.circle)),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     ]));

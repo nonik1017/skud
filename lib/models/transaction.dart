@@ -19,12 +19,13 @@ class Transaction {
 
   factory Transaction.fromJson(Map<String, dynamic> json) {
     final dynamic dateParts = json['date_created']?.split('T');
+    final dynamic timeParts = dateParts?[1]?.split('.');
 
     Map<String, dynamic> userJson = Map<String, dynamic>.from(json['user']);
     return Transaction(
       id: json['id'],
       actualDate: dateParts?[0],
-      time: dateParts?[1],
+      time: timeParts?[0],
       amount: json['amount'],
       status: json['status'],
       user: User.fromJson(userJson),

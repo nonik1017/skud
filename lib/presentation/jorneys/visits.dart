@@ -242,99 +242,103 @@ class VisitsState extends State<VisitsApp> {
                         ],
                       ),
                       SingleChildScrollView(
-                        child: Expanded(
-                          child: ListView.builder(
-                            // scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: state.loadedVisit.length,
-                            itemBuilder: (BuildContext context, int index) =>
-                                Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(top: 25),
-                                      child: Text(
-                                        state.loadedVisit[index].actualDate,
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(top: 25),
-                                      child: Text(
-                                        state.loadedVisit[index].time,
-                                        style: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Transform.translate(
-                                          offset: const Offset(0, -4),
-                                          child: state.loadedVisit[index].type ==
-                                                  'entrance'
-                                              ? Container(
-                                                  height: 11,
-                                                  width: 11,
-                                                  margin: const EdgeInsets.only(
-                                                      right: 15),
-                                                  decoration: const BoxDecoration(
-                                                      color: Color.fromRGBO(
-                                                          88, 186, 171, 1),
-                                                      shape: BoxShape.circle))
-                                              : Container(
-                                                  height: 11,
-                                                  width: 11,
-                                                  margin: const EdgeInsets.only(
-                                                      right: 15),
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                          color: Color.fromRGBO(
-                                                              253, 82, 67, 1),
-                                                          shape:
-                                                              BoxShape.circle)),
-                                        ),
-                                        Container(
-                                          margin:
-                                              const EdgeInsets.only(top: 25),
-                                          child: Text(
-                                            state.loadedVisit[index].type ==
-                                                    'entrance'
-                                                ? 'Вход'
-                                                : 'Выход',
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w700,
-                                            ),
+                        child: Stack(
+                          children: [
+                            ListView.builder(
+                              // scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: state.loadedVisit.length,
+                              itemBuilder: (BuildContext context, int index) =>
+                                  Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Container(
+                                        margin: const EdgeInsets.only(top: 25),
+                                        child: Text(
+                                          state.loadedVisit[index].actualDate,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        margin: const EdgeInsets.only(top: 25),
+                                        child: Text(
+                                          state.loadedVisit[index].time,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Transform.translate(
+                                            offset: const Offset(0, -4),
+                                            child: state.loadedVisit[index].type ==
+                                                    'entrance'
+                                                ? Container(
+                                                    height: 11,
+                                                    width: 11,
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            right: 15),
+                                                    decoration: const BoxDecoration(
+                                                        color: Color.fromRGBO(
+                                                            88, 186, 171, 1),
+                                                        shape: BoxShape.circle))
+                                                : Container(
+                                                    height: 11,
+                                                    width: 11,
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            right: 15),
+                                                    decoration: const BoxDecoration(
+                                                        color: Color.fromRGBO(
+                                                            253, 82, 67, 1),
+                                                        shape:
+                                                            BoxShape.circle)),
+                                          ),
+                                          Container(
+                                            margin:
+                                                const EdgeInsets.only(top: 25),
+                                            child: Text(
+                                              state.loadedVisit[index].type ==
+                                                      'entrance'
+                                                  ? 'Вход'
+                                                  : 'Выход',
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     ]));
