@@ -62,7 +62,7 @@ class ChildTransactionsState extends State<ChildTransactionsApp> {
                       role: 'student',
                     ),
                     body: ListView(children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 100,
                       ),
                       Row(
@@ -102,7 +102,7 @@ class ChildTransactionsState extends State<ChildTransactionsApp> {
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 50),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'No data recieved',
                             style: TextStyle(
@@ -259,7 +259,7 @@ class ChildTransactionsState extends State<ChildTransactionsApp> {
                                         child: Center(
                                           child: Text(
                                             '${state.loadedTransaction[index].user?.grade}',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w700),
                                           ),
                                         ),

@@ -62,7 +62,7 @@ class TransactionsState extends State<TransactionsApp> {
                       role: 'student',
                     ),
                     body: ListView(children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 100,
                       ),
                       Row(
@@ -102,7 +102,7 @@ class TransactionsState extends State<TransactionsApp> {
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 50),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'No data recieved',
                             style: TextStyle(
@@ -231,7 +231,7 @@ class TransactionsState extends State<TransactionsApp> {
                           child: ListView.builder(
                             // scrollDirection: Axis.vertical,
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: state.loadedTransaction.length,
                             itemBuilder: (BuildContext context, int index) =>
                                 Row(

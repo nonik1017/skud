@@ -19,9 +19,9 @@ class ChildrensApp extends StatefulWidget {
 class ChildrensState extends State<ChildrensApp> {
   final childrenRepository = ChildrenRepository();
   List colors = [
-    Color.fromRGBO(246, 188, 0, 1),
-    Color.fromRGBO(252, 107, 87, 1),
-    Color.fromRGBO(88, 186, 171, 1),
+    const Color.fromRGBO(246, 188, 0, 1),
+    const Color.fromRGBO(252, 107, 87, 1),
+    const Color.fromRGBO(88, 186, 171, 1),
   ];
 
   @override
@@ -82,7 +82,7 @@ class ChildrensState extends State<ChildrensApp> {
                       child: ListView.builder(
                           // scrollDirection: Axis.vertical,
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: state.loadedChildren.length,
                           itemBuilder: (BuildContext context, int index) =>
                               Container(
@@ -103,7 +103,7 @@ class ChildrensState extends State<ChildrensApp> {
                                   children: [
                                     Row(
                                       children: [
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         const Icon(
@@ -112,17 +112,17 @@ class ChildrensState extends State<ChildrensApp> {
                                         ),
                                         Column(
                                           children: [
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             Text(
                                               '${state.loadedChildren[index].lastName} \n${state.loadedChildren[index].firstName} \n${state.loadedChildren[index].middleName}',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 20,
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             Container(
@@ -149,74 +149,74 @@ class ChildrensState extends State<ChildrensApp> {
                                       ],
                                     ),
                                     ListTile(
-                                      title: Text('ИИН'),
+                                      title: const Text('ИИН'),
                                       subtitle:
                                           state.loadedChildren[index]?.iin !=
                                                   null
                                               ? Text(
                                                   '${state.loadedChildren[index]?.iin}',
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 18,
                                                   ),
                                                 )
-                                              : EmptyText(),
+                                              : const EmptyText(),
                                     ),
                                     ListTile(
-                                      title: Text('Логин'),
+                                      title: const Text('Логин'),
                                       subtitle: state.loadedChildren[index]
                                                   ?.username !=
                                               null
                                           ? Text(
                                               '${state.loadedChildren[index]?.username}',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 18,
                                               ),
                                             )
-                                          : EmptyText(),
+                                          : const EmptyText(),
                                     ),
                                     ListTile(
-                                      title: Text('Номер телефона'),
+                                      title: const Text('Номер телефона'),
                                       subtitle:
                                           state.loadedChildren[index]?.phone !=
                                                   null
                                               ? Text(
                                                   '${state.loadedChildren[index]?.phone}',
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 18,
                                                   ),
                                                 )
-                                              : EmptyText(),
+                                              : const EmptyText(),
                                     ),
                                     ListTile(
-                                      title: Text('E-mail'),
+                                      title: const Text('E-mail'),
                                       subtitle:
                                           state.loadedChildren[index]?.email !=
                                                   null
                                               ? Text(
                                                   '${state.loadedChildren[index]?.email}',
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 18,
                                                   ),
                                                 )
-                                              : EmptyText(),
+                                              : const EmptyText(),
                                     ),
                                     ListTile(
-                                      title: Text('Класс'),
+                                      title: const Text('Класс'),
                                       subtitle:
                                           state.loadedChildren[index]?.grade !=
                                                   null
                                               ? Text(
                                                   '${state.loadedChildren[index]?.grade}',
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontWeight: FontWeight.w700,
                                                     fontSize: 18,
                                                   ),
                                                 )
-                                              : EmptyText(),
+                                              : const EmptyText(),
                                     ),
                                     // ListTile(
                                     //   title: Text('Классный руководитель'),

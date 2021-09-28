@@ -76,7 +76,7 @@ class ParentsState extends State<ParentsApp> {
                       child: ListView.builder(
                         // scrollDirection: Axis.vertical,
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: state.loadedParent.length,
                         itemBuilder: (BuildContext context, int index) =>
                             Container(
@@ -88,7 +88,7 @@ class ParentsState extends State<ParentsApp> {
                           child: ListTile(
                             leading: Container(
                               margin: const EdgeInsets.only(top: 5),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.account_circle_outlined,
                                 size: 50,
                                 color: style.Colors.mainColor,
@@ -114,7 +114,7 @@ class ParentsState extends State<ParentsApp> {
                                         color: Colors.black,
                                       ),
                                     )
-                                  : SizedBox(),
+                                  : const SizedBox(),
                             ),
                           ),
                         ),

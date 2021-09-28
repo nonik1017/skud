@@ -285,7 +285,7 @@ class ChildVisitsState extends State<ChildVisitsApp> {
                                         child: Center(
                                           child: Text(
                                             '${state.loadedVisit[index].user?.grade}',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w700),
                                           ),
                                         ),
