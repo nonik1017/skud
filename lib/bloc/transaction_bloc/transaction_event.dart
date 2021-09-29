@@ -11,7 +11,6 @@ class TransactionFilterButtonPressed extends TransactionEvent {
     required this.selectedToDate,
   });
 
-  @override
   List<Object> get props => [selectedFromDate, selectedToDate];
 
   @override

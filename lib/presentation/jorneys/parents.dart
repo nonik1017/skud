@@ -72,53 +72,56 @@ class ParentsState extends State<ParentsApp> {
                     role: 'student',
                   ),
                   body: SingleChildScrollView(
-                    child: Expanded(
-                      child: ListView.builder(
-                        // scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: state.loadedParent.length,
-                        itemBuilder: (BuildContext context, int index) =>
-                            Container(
-                          decoration: const BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(
-                                      width: 1,
-                                      color: Color.fromRGBO(0, 0, 0, 0.2)))),
-                          child: ListTile(
-                            leading: Container(
-                              margin: const EdgeInsets.only(top: 5),
-                              child: Icon(
-                                Icons.account_circle_outlined,
-                                size: 50,
-                                color: style.Colors.mainColor,
+                    child: Stack(
+                      children: [
+                        ListView.builder(
+                          // scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: state.loadedParent.length,
+                          itemBuilder: (BuildContext context, int index) =>
+                              Container(
+                            decoration: const BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: 1,
+                                        color: Color.fromRGBO(0, 0, 0, 0.2)))),
+                            child: ListTile(
+                              leading: Container(
+                                margin: const EdgeInsets.only(top: 5),
+                                child: const Icon(
+                                  Icons.account_circle_outlined,
+                                  size: 50,
+                                  color: style.Colors.mainColor,
+                                ),
                               ),
-                            ),
-                            title: Container(
-                              margin: const EdgeInsets.only(top: 15),
-                              child: Text(
-                                '${state.loadedParent[index].firstName} ${state.loadedParent[index].middleName} ${state.loadedParent[index].lastName}',
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w700),
+                              title: Container(
+                                margin: const EdgeInsets.only(top: 15),
+                                child: Text(
+                                  '${state.loadedParent[index].firstName} ${state.loadedParent[index].middleName} ${state.loadedParent[index].lastName}',
+                                  style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700),
+                                ),
                               ),
-                            ),
-                            subtitle: Container(
-                              margin:
-                                  const EdgeInsets.only(top: 10, bottom: 10),
-                              child: state.loadedParent[index].phone != null
-                                  ? Text(
-                                      '${state.loadedParent[index].phone}',
-                                      style: const TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.black,
-                                      ),
-                                    )
-                                  : SizedBox(),
+                              subtitle: Container(
+                                margin:
+                                    const EdgeInsets.only(top: 10, bottom: 10),
+                                child: state.loadedParent[index].phone != null
+                                    ? Text(
+                                        '${state.loadedParent[index].phone}',
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.black,
+                                        ),
+                                      )
+                                    : const SizedBox(),
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 );

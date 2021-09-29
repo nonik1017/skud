@@ -9,9 +9,7 @@ import 'login_form.dart';
 class LoginScreen extends StatelessWidget {
   final UserRepository userRepository;
 
-  const LoginScreen({key, required this.userRepository})
-      : assert(userRepository != null),
-        super(key: key);
+  const LoginScreen({key, required this.userRepository}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

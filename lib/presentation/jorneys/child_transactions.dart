@@ -2,31 +2,31 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:skud/bloc/transaction_bloc/transaction_bloc.dart';
+import 'package:skud/bloc/transaction_bloc/child_transaction_bloc.dart';
 import 'package:skud/bloc/transaction_bloc/transaction_event.dart';
 import 'package:skud/bloc/transaction_bloc/transaction_state.dart';
 import 'package:skud/presentation/widgets/filter_period.dart';
 import 'package:skud/presentation/widgets/side_drawer.dart';
 import 'package:skud/repositories/repositories.dart';
 
-class TransactionsApp extends StatefulWidget {
-  const TransactionsApp({Key? key}) : super(key: key);
+class ChildTransactionsApp extends StatefulWidget {
+  const ChildTransactionsApp({Key? key}) : super(key: key);
 
   @override
-  TransactionsState createState() => TransactionsState();
+  ChildTransactionsState createState() => ChildTransactionsState();
 }
 
-class TransactionsState extends State<TransactionsApp> {
+class ChildTransactionsState extends State<ChildTransactionsApp> {
   bool filterTapped = false;
   double tableMarginTop = 20;
-  final transactionRepository = TransactionRepository();
+  final childTransactionRepository = ChildTransactionRepository();
   final userRepository = UserRepository();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<TransactionBloc>(
-        create: (context) => TransactionBloc(
-              transactionRepository: transactionRepository,
+    return BlocProvider<ChildTransactionBloc>(
+        create: (context) => ChildTransactionBloc(
+              childTransactionRepository: childTransactionRepository,
               userRepository: userRepository,
             )..add(TransactionLoadEvent()),
         child: MaterialApp(
@@ -36,7 +36,7 @@ class TransactionsState extends State<TransactionsApp> {
             fontFamily: 'Rubik',
             primarySwatch: Colors.blueGrey,
           ),
-          home: BlocBuilder<TransactionBloc, TransactionState>(
+          home: BlocBuilder<ChildTransactionBloc, TransactionState>(
             builder: (context, state) {
               if (state is TransactionEmptyState) {
                 return Scaffold(
@@ -128,17 +128,6 @@ class TransactionsState extends State<TransactionsApp> {
                       backgroundColor: Colors.white,
                       iconTheme:
                           const IconThemeData(color: Colors.black, size: 40),
-                      // actions: [
-                      //   Container(
-                      //     margin: const EdgeInsets.only(right: 10),
-                      //     child: IconButton(
-                      //         onPressed: () => {},
-                      //         icon: const Icon(
-                      //           Icons.notifications_none_rounded,
-                      //           size: 30,
-                      //         )),
-                      //   ),
-                      // ],
                     ),
                     drawer: SideDrawer(
                       role: state.loadedUser.role != null
@@ -187,16 +176,16 @@ class TransactionsState extends State<TransactionsApp> {
                               decoration: const BoxDecoration(
                                   color: Color.fromRGBO(88, 186, 171, 0.06)),
                               child: const FilterPeriodApp(
-                                source: 'transactions',
+                                source: 'child_transactions',
                               ),
                             )
                           : Container(),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                              margin: const EdgeInsets.only(top: 20),
+                              margin: const EdgeInsets.only(top: 20, left: 35),
                               child: const Text(
                                 'Дата',
                                 style: TextStyle(
@@ -204,20 +193,20 @@ class TransactionsState extends State<TransactionsApp> {
                                   fontWeight: FontWeight.w400,
                                 ),
                               )),
+                          // Container(
+                          //   margin: const EdgeInsets.only(top: 20),
+                          //   child: const Text(
+                          //     "Время",
+                          //     style: TextStyle(
+                          //       fontSize: 14,
+                          //       fontWeight: FontWeight.w400,
+                          //     ),
+                          //   ),
+                          // ),
                           Container(
-                            margin: const EdgeInsets.only(top: 20),
+                            margin: const EdgeInsets.only(top: 20, right: 35),
                             child: const Text(
-                              "Время",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(top: 20),
-                            child: const Text(
-                              "Сумма",
+                              "Выход",
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
@@ -230,96 +219,124 @@ class TransactionsState extends State<TransactionsApp> {
                         child: Stack(
                           children: [
                             ListView.builder(
-                              // scrollDirection: Axis.vertical,
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: state.loadedTransaction.length,
                               itemBuilder: (BuildContext context, int index) =>
-                                  Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Column(
-                                    children: [
-                                      Container(
-                                          margin:
-                                              const EdgeInsets.only(top: 25),
-                                          child: Text(
-                                            state.loadedTransaction[index]
-                                                .actualDate,
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                          )),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: <Widget>[
-                                      Container(
-                                        margin: const EdgeInsets.only(top: 25),
-                                        child: Text(
-                                          state.loadedTransaction[index].time,
+                                  Container(
+                                decoration: const BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: 1,
+                                            color:
+                                                Color.fromRGBO(0, 0, 0, 0.2)))),
+                                child: ListTile(
+                                  title: Container(
+                                    margin: const EdgeInsets.only(
+                                      top: 15,
+                                      left: 20,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          '${state.loadedTransaction[index].user?.firstName}',
                                           style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700),
+                                        ),
+                                        Container(
+                                          margin:
+                                              const EdgeInsets.only(right: 15),
+                                          width: 50,
+                                          height: 23,
+                                          decoration: BoxDecoration(
+                                            color: const Color.fromRGBO(
+                                                22, 14, 78, 0.1),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              '${state.loadedTransaction[index].user?.grade}',
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.w700),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: <Widget>[
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Container(
-                                            margin:
-                                                const EdgeInsets.only(top: 25),
-                                            child: Text(
-                                              '${state.loadedTransaction[index].amount}',
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w700,
-                                              ),
+                                  subtitle: Container(
+                                    margin: const EdgeInsets.only(
+                                      top: 10,
+                                      bottom: 10,
+                                      left: 20,
+                                      right: 20,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          '${state.loadedTransaction[index]?.actualDate}',
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        Text(
+                                          '${state.loadedTransaction[index]?.time}',
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Transform.translate(
+                                              offset: const Offset(0, 0),
+                                              child: state.loadedTransaction[index].status ==
+                                                      'completed'
+                                                  ? Container(
+                                                      height: 11,
+                                                      width: 11,
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              right: 15),
+                                                      decoration: const BoxDecoration(
+                                                          color: Color.fromRGBO(
+                                                              88, 186, 171, 1),
+                                                          shape:
+                                                              BoxShape.circle))
+                                                  : Container(
+                                                      height: 11,
+                                                      width: 11,
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              right: 15),
+                                                      decoration: const BoxDecoration(
+                                                          color: Color.fromRGBO(
+                                                              253, 82, 67, 1),
+                                                          shape: BoxShape.circle)),
                                             ),
-                                          ),
-                                          Transform.translate(
-                                            offset: const Offset(0, -4),
-                                            child: state.loadedTransaction[index].status ==
-                                                    'completed'
-                                                ? Container(
-                                                    height: 11,
-                                                    width: 11,
-                                                    margin:
-                                                        const EdgeInsets.only(
-                                                            left: 15),
-                                                    decoration: const BoxDecoration(
-                                                        color: Color.fromRGBO(
-                                                            88, 186, 171, 1),
-                                                        shape: BoxShape.circle))
-                                                : Container(
-                                                    height: 11,
-                                                    width: 11,
-                                                    margin:
-                                                        const EdgeInsets.only(
-                                                            left: 15),
-                                                    decoration: const BoxDecoration(
-                                                        color: Color.fromRGBO(
-                                                            253, 82, 67, 1),
-                                                        shape:
-                                                            BoxShape.circle)),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                            Text(
+                                              '${state.loadedTransaction[index]?.amount}',
+                                              style: const TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ],

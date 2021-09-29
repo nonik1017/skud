@@ -34,7 +34,7 @@ class _LoginFormState extends State<LoginForm> {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginFailure) {
-          Scaffold.of(context).showSnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text("Login failed."),
               backgroundColor: Colors.red,
@@ -136,13 +136,13 @@ class _LoginFormState extends State<LoginForm> {
                           borderSide:
                               const BorderSide(color: style.Colors.mainColor),
                           borderRadius: BorderRadius.circular(8.0)),
-                      contentPadding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      contentPadding:
+                          const EdgeInsets.only(left: 10.0, right: 10.0),
                       hintText: "Пароль",
                       suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
                             _passwordVisible = _passwordVisible ? false : true;
-                            print('pwdvsb: $_passwordVisible');
                           });
                         },
                         icon: Icon(
@@ -165,45 +165,48 @@ class _LoginFormState extends State<LoginForm> {
                     obscureText: !_passwordVisible,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 30.0, bottom: 20.0),
+                    padding: const EdgeInsets.only(top: 30.0, bottom: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         SizedBox(
-                            height: 45,
-                            child: state is LoginLoading
-                                ? Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Center(
-                                          child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: const [
-                                          SizedBox(
-                                            height: 25.0,
-                                            width: 25.0,
-                                            child: CupertinoActivityIndicator(),
-                                          )
-                                        ],
-                                      ))
-                                    ],
-                                  )
-                                : RaisedButton(
-                                    color: style.Colors.mainColor,
-                                    disabledColor: style.Colors.mainColor,
-                                    disabledTextColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    onPressed: _onLoginButtonPressed,
-                                    child: const Text("Войти",
-                                        style: TextStyle(
-                                            fontSize: 12.0,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white)))),
+                          height: 45,
+                          child: state is LoginLoading
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Center(
+                                        child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: const [
+                                        SizedBox(
+                                          height: 25.0,
+                                          width: 25.0,
+                                          child: CupertinoActivityIndicator(),
+                                        )
+                                      ],
+                                    ))
+                                  ],
+                                )
+                              : RaisedButton(
+                                  color: style.Colors.mainColor,
+                                  disabledColor: style.Colors.mainColor,
+                                  disabledTextColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  onPressed: _onLoginButtonPressed,
+                                  child: const Text(
+                                    "Войти",
+                                    style: TextStyle(
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                        ),
                       ],
                     ),
                   ),

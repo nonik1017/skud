@@ -5,7 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:skud/bloc/user_bloc/user_bloc.dart';
 import 'package:skud/bloc/user_bloc/user_event.dart';
 import 'package:skud/bloc/user_bloc/user_state.dart';
-import 'package:skud/presentation/jorneys/init.dart';
+import 'package:skud/presentation/widgets/side_drawer/side_drawer_child_transactions.dart';
+import 'package:skud/presentation/widgets/side_drawer/side_drawer_child_visits.dart';
+import 'package:skud/presentation/widgets/side_drawer/side_drawer_childrens.dart';
 import 'package:skud/presentation/widgets/side_drawer/side_drawer_logo.dart';
 import 'package:skud/presentation/widgets/side_drawer/side_drawer_parents.dart';
 import 'package:skud/presentation/widgets/side_drawer/side_drawer_profile.dart';
@@ -23,7 +25,6 @@ class SideDrawer extends StatefulWidget {
 }
 
 class _SideDrawerState extends State<SideDrawer> {
-  final LanguageCharacter? _character = LanguageCharacter.ru;
   final userRepository = UserRepository();
 
   @override
@@ -140,9 +141,22 @@ class _SideDrawerState extends State<SideDrawer> {
                     }),
                     const SideDrawerProfile(),
                     const SideDrawerVists(),
+                    widget.role == 'parent'
+                        ? const SideDrawerChildVisits()
+                        : const SizedBox(),
                     const SideDrawerTransactions(),
-                    const SideDrawerParents(),
-                    const SideDrawerRights(),
+                    widget.role == 'parent'
+                        ? const SideDrawerChildTransactions()
+                        : const SizedBox(),
+                    widget.role == 'student'
+                        ? const SideDrawerParents()
+                        : const SizedBox(),
+                    widget.role == 'parent'
+                        ? const SideDrawerChildrens()
+                        : const SizedBox(),
+                    SideDrawerRights(
+                      role: widget.role,
+                    ),
                   ],
                 ),
               ),

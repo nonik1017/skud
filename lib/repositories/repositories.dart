@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:skud/services/children_api_provider.dart';
 import 'package:skud/services/parent_api_provider.dart';
 import 'package:skud/services/transaction_api_provider.dart';
 import 'package:skud/services/user_api_provider.dart';
@@ -78,6 +79,25 @@ class VisitRepository extends MainRepository {
   }
 }
 
+class ChildVisitRepository extends MainRepository {
+  final VisitProvider _visitProvider = VisitProvider();
+  final UserRepository _userRepository = UserRepository();
+
+  Future<dynamic> getFilteredChildVisits(
+    String selectedFromDate,
+    String selectedToDate,
+  ) async {
+    var token = await _userRepository.getToken();
+    return await _visitProvider.getFilteredChildVisits(
+        token, selectedFromDate, selectedToDate);
+  }
+
+  Future<dynamic> getChildVisits() async {
+    var token = await _userRepository.getToken();
+    return await _visitProvider.getChildVisits(token);
+  }
+}
+
 class TransactionRepository extends MainRepository {
   final TransactionProvider _transactionProvider = TransactionProvider();
   final UserRepository _userRepository = UserRepository();
@@ -97,6 +117,25 @@ class TransactionRepository extends MainRepository {
   }
 }
 
+class ChildTransactionRepository extends MainRepository {
+  final TransactionProvider _transactionProvider = TransactionProvider();
+  final UserRepository _userRepository = UserRepository();
+
+  Future<dynamic> getFilteredChildTransactions(
+    String selectedFromDate,
+    String selectedToDate,
+  ) async {
+    var token = await _userRepository.getToken();
+    return await _transactionProvider.getFilteredChildTransactions(
+        token, selectedFromDate, selectedToDate);
+  }
+
+  Future<dynamic> getChildTransactions() async {
+    var token = await _userRepository.getToken();
+    return await _transactionProvider.getChildTransactions(token);
+  }
+}
+
 class ParentRepository extends MainRepository {
   final ParentProvider _parentProvider = ParentProvider();
   final UserRepository _userRepository = UserRepository();
@@ -104,5 +143,15 @@ class ParentRepository extends MainRepository {
   Future<dynamic> getParents() async {
     var token = await _userRepository.getToken();
     return await _parentProvider.getParents(token);
+  }
+}
+
+class ChildrenRepository extends MainRepository {
+  final ChildrenProvider _childrenProvider = ChildrenProvider();
+  final UserRepository _userRepository = UserRepository();
+
+  Future<dynamic> getChildrens() async {
+    var token = await _userRepository.getToken();
+    return await _childrenProvider.getChildrens(token);
   }
 }

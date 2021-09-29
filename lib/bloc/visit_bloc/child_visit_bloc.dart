@@ -3,13 +3,15 @@ import 'package:skud/bloc/visit_bloc/visit_event.dart';
 import 'package:skud/bloc/visit_bloc/visit_state.dart';
 import 'package:skud/repositories/repositories.dart';
 
-class VisitBloc extends Bloc<VisitEvent, VisitState> {
-  final VisitRepository visitRepository;
+class ChildVisitBloc extends Bloc<VisitEvent, VisitState> {
+  final ChildVisitRepository childVisitRepository;
   final UserRepository userRepository;
   // VisitBloc({required this.visitRepository}) : super(VisitEmptyState());
 
-  VisitBloc({required this.visitRepository, required this.userRepository})
-      : super(VisitLoadingState());
+  ChildVisitBloc({
+    required this.childVisitRepository,
+    required this.userRepository,
+  }) : super(VisitLoadingState());
 
   @override
   Stream<VisitState> mapEventToState(VisitEvent event) async* {
@@ -17,10 +19,11 @@ class VisitBloc extends Bloc<VisitEvent, VisitState> {
       yield VisitLoadingState();
 
       try {
-        final dynamic loadedVisit = await visitRepository.getVisits();
+        final dynamic loadedChildVisit =
+            await childVisitRepository.getChildVisits();
         final dynamic loadedUser = await userRepository.getUser();
         yield VisitLoadedState(
-          loadedVisit: loadedVisit,
+          loadedVisit: loadedChildVisit,
           loadedUser: loadedUser,
         );
       } catch (_) {
@@ -34,12 +37,13 @@ class VisitBloc extends Bloc<VisitEvent, VisitState> {
         final dynamic loadedUser = await userRepository.getUser();
         final dynamic fromDateParts = event.selectedFromDate.split(' ');
         final dynamic toDateParts = event.selectedToDate.split(' ');
-        final dynamic loadedVisit = await visitRepository.getFilteredVisits(
+        final dynamic loadedChildVisit =
+            await childVisitRepository.getFilteredChildVisits(
           fromDateParts[0],
           toDateParts[0],
         );
         yield VisitLoadedState(
-          loadedVisit: loadedVisit,
+          loadedVisit: loadedChildVisit,
           loadedUser: loadedUser,
         );
       } catch (e) {

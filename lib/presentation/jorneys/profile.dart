@@ -13,6 +13,8 @@ import 'package:skud/repositories/repositories.dart';
 class ProfileApp extends StatelessWidget {
   final userRepository = UserRepository();
 
+  ProfileApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<UserBloc>(
@@ -52,7 +54,7 @@ class ProfileApp extends StatelessWidget {
                         const IconThemeData(color: Colors.black, size: 40),
                     actions: [
                       IconButton(
-                          icon: Icon(Icons.logout_outlined),
+                          icon: const Icon(Icons.logout_outlined),
                           onPressed: () {
                             BlocProvider.of<AuthenticationBloc>(context).add(
                               LoggedOut(),
@@ -100,13 +102,16 @@ class ProfileApp extends StatelessWidget {
                                   color: const Color.fromRGBO(246, 188, 0, 0.3),
                                 ),
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  child: Text(
-                                    '${state.loadedUser?.balance.toInt()} тг',
-                                    style: const TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w700,
-                                      color: style.Colors.textMain,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 5),
+                                  child: Center(
+                                    child: Text(
+                                      '${state.loadedUser?.balance.toInt()} тг',
+                                      style: const TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w700,
+                                        color: style.Colors.textMain,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -138,7 +143,7 @@ class ProfileApp extends StatelessWidget {
                                     fontWeight: FontWeight.w700),
                               ),
                             )
-                          : EmptyText(),
+                          : const EmptyText(),
                       Container(
                         margin: const EdgeInsets.only(left: 40, top: 30),
                         child: const Text(
@@ -182,7 +187,7 @@ class ProfileApp extends StatelessWidget {
                                     fontWeight: FontWeight.w700),
                               ),
                             )
-                          : EmptyText(),
+                          : const EmptyText(),
                       Container(
                         margin: const EdgeInsets.only(left: 40, top: 30),
                         padding: const EdgeInsets.only(top: 10),
@@ -206,7 +211,7 @@ class ProfileApp extends StatelessWidget {
                                     fontWeight: FontWeight.w700),
                               ),
                             )
-                          : EmptyText(),
+                          : const EmptyText(),
                       Container(
                         margin: const EdgeInsets.only(left: 40, top: 30),
                         child: const Text(
@@ -229,7 +234,7 @@ class ProfileApp extends StatelessWidget {
                                     fontWeight: FontWeight.w700),
                               ),
                             )
-                          : EmptyText(),
+                          : const EmptyText(),
                       state.loadedUser?.teacher != null
                           ? Container(
                               margin: const EdgeInsets.only(left: 40, top: 30),

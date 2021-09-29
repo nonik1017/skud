@@ -11,7 +11,6 @@ class VisitFilterButtonPressed extends VisitEvent {
     required this.selectedToDate,
   });
 
-  @override
   List<Object> get props => [selectedFromDate, selectedToDate];
 
   @override
